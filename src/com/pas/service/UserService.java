@@ -23,7 +23,7 @@ public class UserService implements UserServiceImp{
 			return 0;
 		}
 		
-		return uid;
+		return 123;
 	}
 
 	

@@ -9,5 +9,11 @@ public class UserDao implements UserDaoImp{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public int findUIdByUsernameAndPassword(UserModel um) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 }

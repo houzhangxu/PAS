@@ -6,9 +6,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="user">
 	
 	<select id="findUserByID" parameterType="int" resultType="com.pas.model.UserModel">
-		select * from where id = #{value}
+		select * from user where id = #{value}
+	</select> 
+	<select id="selectUser" parameterType="int" resultType="com.pas.model.UserModel">
+	 	select * from user
 	</select>
-	
-	
-	
+	<select id="findUIdByUsername" parameterType="int" resultType="java.lang.string">
+	   	select u_id from user where username=#{value}
+	</select>
+	<insert id="insertUser" parameterType="UserModel">
+	    <selectKey keyProperty="id" order="AFTER" resultType="int">
+          	 select last_insert_id()
+      	</selectKey>
+      	insert into user values(#{u_id},#{username},#{password},#{status},#{create_time})
+	</insert>
+	<delete id="deleteUserByUId" parameterType="int">
+	 	delete from user where id=#{value}
+	</delete>
+	<update id="updateUserByUId" parameterType="int">
+	  	update user set u_id=#{u_id},username=#{username},password=#{password},status=#{status},create_time=#{create_time}
+	</update>
 </mapper>

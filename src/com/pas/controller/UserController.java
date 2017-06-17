@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class UserController {
-	@RequestMapping("/shop.action")
+	@RequestMapping("/shop.pa")
 	public ModelAndView handleRequest1(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");

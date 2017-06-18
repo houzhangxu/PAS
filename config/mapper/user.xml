@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="user">
 	
-	<select id="findUserByID" parameterType="int" resultType="com.pas.model.UserModel">
+	<select id="findUserByUId" parameterType="int" resultType="com.pas.model.UserModel">
 		select * from user where u_id = #{value}
 	</select> 
 	<select id="selectUser" resultType="com.pas.model.UserModel">

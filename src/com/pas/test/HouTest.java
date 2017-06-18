@@ -25,7 +25,7 @@ public class HouTest {
 	@Test
 	public void t(){
 		System.out.println("Hi!");
-		UserModel um = user.findUserByID(1);
+		UserModel um = user.findUserByUId(1);
 		System.out.println(um.getU_id());
 		System.out.println(um.getUsername());
 	}

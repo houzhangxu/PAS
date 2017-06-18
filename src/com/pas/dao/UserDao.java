@@ -13,9 +13,9 @@ public class UserDao implements UserDaoImp{
 	private SqlSession ss;
 	
 	@Override
-	public UserModel findUserByID(int id) {
+	public UserModel findUserByUId(int id) {
 		// TODO Auto-generated method stub
-		return ss.selectOne("user.findUserByID",id);
+		return ss.selectOne("user.findUserByUId",id);
 	}
 
 

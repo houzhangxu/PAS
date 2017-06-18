@@ -5,7 +5,7 @@ import java.util.List;
 import com.pas.model.UserModel;
 
 public interface UserDaoImp {
-	public UserModel findUserByID(int u_id);
+	public UserModel findUserByUId(int u_id);
 	public List<UserModel> selectUser();
 	public int findUIdByUsername(String username);
 	public void insertUser(UserModel um);

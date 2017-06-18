@@ -1,5 +1,7 @@
 package com.pas.test;
 
+import java.util.Date;
+
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,9 +27,17 @@ public class HouTest {
 	@Test
 	public void t(){
 		System.out.println("Hi!");
-		UserModel um = user.findUserByID(1);
+		UserModel um = user.findUserByUId(1);
 		System.out.println(um.getU_id());
 		System.out.println(um.getUsername());
+		
+		UserModel um1=new UserModel();
+		um1.setU_id(2);
+		um1.setUsername("lisi");
+		um1.setPassword("1464");
+		um1.setStatus(0);
+		um1.setCreate_time(new Date(201,2,1));
+		user.insertUser(um1);
 	}
 	
 }

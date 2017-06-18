@@ -14,7 +14,7 @@ public class UserDao implements UserDaoImp{
 	private SqlSession ss;
 
 	@Override
-	public UserModel findUserByID(int u_id) {
+	public UserModel findUserByUId(int u_id) {
 		// 根据u_id查询user表中的一条记录
 		UserModel um=ss.selectOne("user.findUserByID",u_id);
 		return um;

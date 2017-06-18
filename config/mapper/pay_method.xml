@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pay_method">
+	<select id="findPayMethodByPId" parameterType="int" resultType="com.pas.model.PayMethodModel">
+		select * from pay_method where p_id=#{value}
+	</select>
+	<select id="selectPayMethod" resultType="com.pas.model.PayMethodModel">
+		select * from pay_method order by create_time desc
+	</select>
+	<insert id="insertPayMethod" parameterType="com.pas.model.PayMethodModel">
+		<selectKey keyProperty="p_id" order="AFTER" resultType="int">
+			select last_insert_id()		
+		</selectKey>
+		insert into pay_method values(#{p_id},#{pay_name},#{create_time})
+	</insert>
+	<delete id="deletePayMethodByPId" parameterType="int">
+		delete from pay_method where p_id=#{value}
+	</delete>
+	<update id="updatePayMethodByPId" parameterType="com.pas.model.PayMethodModel">
+		update pay_method set p_id=#{p_id},pay_name=#{pay_name},create_time=#{create_time} where p_id=#{value}
+	</update>
+</mapper>

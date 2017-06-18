@@ -4,37 +4,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
-	
-	<!-- 根据u_id查询user表中的一条记录  -->
-	<select id="findUserByID" parameterType="int" resultType="com.pas.model.UserModel">
+	<select id="findUserByUId" parameterType="int" resultType="com.pas.model.UserModel">
 		select * from user where u_id = #{value}
 	</select> 
-	
-	<!-- 查询user表中的记录  -->
 	<select id="selectUser" resultType="com.pas.model.UserModel">
-	 	select * from user
+	 	select * from user order by create_time desc
 	</select>
-	
-	<!-- 根据username查询user表中的u_id -->
 	<select id="findUIdByUsername" parameterType="java.lang.String" resultType="int">
 	   	select u_id from user where username=#{value}
 	</select>
-	
-	<!-- 在user表中添加的记录 -->
 	<insert id="insertUser" parameterType="com.pas.model.UserModel">
 	    <selectKey keyProperty="u_id" order="AFTER" resultType="int">
           	 select last_insert_id()
       	</selectKey>
       	insert into user values(#{u_id},#{username},#{password},#{status},#{create_time})
 	</insert>
-	
-	<!-- 根据u_id删除user表中的记录 -->
 	<delete id="deleteUserByUId" parameterType="int">
 	 	delete from user where u_id=#{value}
 	</delete>
-	
-	<!-- 根据u_id更新user表中的一条记录 -->
 	<update id="updateUserByUId" parameterType="com.pas.model.UserModel">
 	  	update user set u_id=#{u_id},username=#{username},password=#{password},status=#{status},create_time=#{create_time} where u_id=#{value}
 	</update>
+	
 </mapper>

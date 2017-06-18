@@ -6,5 +6,13 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 
 <mappers>
 <mapper resource="mapper/user.xml"/>
+<mapper resource="mapper/admin.xml"/>
+<mapper resource="mapper/goods.xml"/>
+<mapper resource="mapper/goods_type.xml"/>
+<mapper resource="mapper/orders.xml"/>
+<mapper resource="mapper/order_detail.xml"/>
+<mapper resource="mapper/order_goods.xml"/>
+<mapper resource="mapper/pay_method.xml"/>
+<mapper resource="mapper/shopping_cart.xml"/>
 </mappers>
 </configuration>

@@ -6,6 +6,7 @@ public class ShoppingCartModel {
 	private int s_c_id;
 	private int g_id;
 	private int u_id;
+	private double taotal;
 	private double create_time;
 	public int getS_c_id() {
 		return s_c_id;
@@ -30,5 +31,11 @@ public class ShoppingCartModel {
 	}
 	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
+	}
+	public double getTaotal() {
+		return taotal;
+	}
+	public void setTaotal(double taotal) {
+		this.taotal = taotal;
 	}
 }

@@ -6,6 +6,7 @@ public class GoodsModel {
 	
 	private int g_id;
 	private String goods_name;
+	private String goods_main;
 	private int goods_type;
 	private double price;
 	private double total;
@@ -53,6 +54,12 @@ public class GoodsModel {
 	}
 	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
+	}
+	public String getGoods_main() {
+		return goods_main;
+	}
+	public void setGoods_main(String goods_main) {
+		this.goods_main = goods_main;
 	}
 	
 }

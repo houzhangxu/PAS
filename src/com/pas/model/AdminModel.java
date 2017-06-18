@@ -8,7 +8,7 @@ public class AdminModel {
 	private String admin_name;
 	private String password;
 	private int status;
-	private Data create_time;
+	private double create_time;
 	public int getA_id() {
 		return a_id;
 	}
@@ -33,10 +33,12 @@ public class AdminModel {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Data getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Data create_time) {
+	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
+	
+
 }

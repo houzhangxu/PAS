@@ -7,7 +7,7 @@ public class UserModel {
 	private String username;
 	private String password;
 	private int status;
-	private Date create_time;
+	private double create_time;
 	public int getU_id() {
 		return u_id;
 	}
@@ -32,12 +32,10 @@ public class UserModel {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public Date getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
-		if(!create_time.equals("")){
-			this.create_time = create_time;
-		}
+	public void setCreate_time(double create_time) {
+		this.create_time = create_time;
 	}
 }

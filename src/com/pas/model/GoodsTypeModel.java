@@ -7,7 +7,7 @@ public class GoodsTypeModel {
 	private String name;
 	private String unit;
 	private int pid;
-	private Date create_time;
+	private double create_time;
 	public int getG_t_id() {
 		return g_t_id;
 	}
@@ -32,10 +32,10 @@ public class GoodsTypeModel {
 	public void setPid(int pid) {
 		this.pid = pid;
 	}
-	public Date getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
 }

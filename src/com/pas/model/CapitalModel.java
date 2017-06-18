@@ -1,17 +1,15 @@
 package com.pas.model;
 
-import java.util.Date;
-
-public class OrdersModel {
-	private int o_id;
-	private  int u_id;
-	private int status;
+public class CapitalModel {
+	private int c_id;
+	private int u_id;
+	private double balance;
 	private double create_time;
-	public int getO_id() {
-		return o_id;
+	public int getC_id() {
+		return c_id;
 	}
-	public void setO_id(int o_id) {
-		this.o_id = o_id;
+	public void setC_id(int c_id) {
+		this.c_id = c_id;
 	}
 	public int getU_id() {
 		return u_id;
@@ -19,11 +17,11 @@ public class OrdersModel {
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
 	}
-	public int getStatus() {
-		return status;
+	public double getBalance() {
+		return balance;
 	}
-	public void setStatus(int status) {
-		this.status = status;
+	public void setBalance(double balance) {
+		this.balance = balance;
 	}
 	public double getCreate_time() {
 		return create_time;
@@ -31,4 +29,6 @@ public class OrdersModel {
 	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
+	
+	
 }

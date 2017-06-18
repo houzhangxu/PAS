@@ -6,7 +6,7 @@ public class ShoppingCartModel {
 	private int s_c_id;
 	private int g_id;
 	private int u_id;
-	private Date create_time;
+	private double create_time;
 	public int getS_c_id() {
 		return s_c_id;
 	}
@@ -25,10 +25,10 @@ public class ShoppingCartModel {
 	public void setU_id(int u_id) {
 		this.u_id = u_id;
 	}
-	public Date getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
 }

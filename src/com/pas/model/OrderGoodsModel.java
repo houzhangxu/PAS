@@ -6,9 +6,9 @@ public class OrderGoodsModel {
 	private int o_g_id;
 	private int o_id;
 	private int g_id;
-	private float discount;
-	private float total;
-	private Date create_time;
+	private int discount;
+	private double total;
+	private double create_time;
 	public int getO_g_id() {
 		return o_g_id;
 	}
@@ -27,22 +27,22 @@ public class OrderGoodsModel {
 	public void setG_id(int g_id) {
 		this.g_id = g_id;
 	}
-	public float getDiscount() {
+	public int getDiscount() {
 		return discount;
 	}
-	public void setDiscount(float discount) {
+	public void setDiscount(int discount) {
 		this.discount = discount;
 	}
-	public float getTotal() {
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(float total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
-	public Date getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
 }

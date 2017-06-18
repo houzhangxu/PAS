@@ -7,7 +7,7 @@ public class OrderDetailModel {
 	private int o_id;
 	private int t_id;
 	private int pay_method;
-	private Date create_time;
+	private double create_time;
 	public int getO_d_id() {
 		return o_d_id;
 	}
@@ -32,10 +32,10 @@ public class OrderDetailModel {
 	public void setPay_method(int pay_method) {
 		this.pay_method = pay_method;
 	}
-	public Date getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
 }

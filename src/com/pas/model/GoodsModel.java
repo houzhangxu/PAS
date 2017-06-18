@@ -7,10 +7,10 @@ public class GoodsModel {
 	private int g_id;
 	private String goods_name;
 	private int goods_type;
-	private float price;
-	private float total;
+	private double price;
+	private double total;
 	private int creator;
-	private Date create_time;
+	private double create_time;
 	
 	public int getG_id() {
 		return g_id;
@@ -30,16 +30,16 @@ public class GoodsModel {
 	public void setGoods_type(int goods_type) {
 		this.goods_type = goods_type;
 	}
-	public float getPrice() {
+	public double getPrice() {
 		return price;
 	}
-	public void setPrice(float price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
-	public float getTotal() {
+	public double getTotal() {
 		return total;
 	}
-	public void setTotal(float total) {
+	public void setTotal(double total) {
 		this.total = total;
 	}
 	public int getCreator() {
@@ -48,10 +48,10 @@ public class GoodsModel {
 	public void setCreator(int creator) {
 		this.creator = creator;
 	}
-	public Date getCreate_time() {
+	public double getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(double create_time) {
 		this.create_time = create_time;
 	}
 	

@@ -24,8 +24,9 @@
 	<context:annotation-config></context:annotation-config>
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<context:component-scan base-package="com.pas.controller"></context:component-scan>
+	<context:component-scan base-package="com.pas.dao"></context:component-scan>
 	
-<!-- 	<bean id="da" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="da" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/pa"></property>
 		<property name="username" value="root"></property>
@@ -40,7 +41,9 @@
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg index="0" ref="sf"></constructor-arg>
 	</bean>
- -->	
+	
+	<bean id="user" class="com.pas.dao.UserDao"></bean>
+	
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
 	

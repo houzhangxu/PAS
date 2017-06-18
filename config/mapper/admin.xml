@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+	<select id="findAdminByAId" parameterType="int" resultType="com.pas.model.AdminModel">
+		select * from admin where a_id=#{value}
+	</select>
+	<select id="selectAdmin" resultType="com.pas.model.AdminModel">
+		select * from admin order by create_time desc
+	</select>
+	<select id="findAIdByAdminname" parameterType="java.lang.String" resultType="int">
+	   	select a_id from admin where admin_name=#{value}
+	</select>
+	<insert id="insertAdmin" parameterType="com.pas.model.AdminModel">
+		<selectKey keyProperty="a_id" order="AFTER" resultType="int">
+          	 select last_insert_id()
+      	</selectKey>
+      	insert into admin values(#{a_id},#{admin_name},#{password},#{status},#{create_time})
+	</insert>
+	<delete id="deleteAdminByAId" parameterType="int">
+		delete from admin where a_id=#{value}
+	</delete>
+	<update id="updateAdminByAId" parameterType="com.pas.model.AdminModel">
+		update admin set a_id=#{a_id},admin_name=#{admin_name},password=#{password},status=#{status},create_time=#{create_time} where a_id=#{value}
+	</update>
+</mapper>

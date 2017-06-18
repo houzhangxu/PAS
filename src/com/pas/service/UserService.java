@@ -17,7 +17,7 @@ public class UserService implements UserServiceImp{
 		um.setUsername(username);
 		um.setPassword(password);
 		
-		int uid = dao.findUIdByUsernameAndPassword(um);
+		int uid = dao.findUIdByUsername("zhangsan");
 		
 		if(uid == 0){
 			return 0;

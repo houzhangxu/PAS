@@ -4,14 +4,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="user">
+<<<<<<< HEAD
 	
+=======
+>>>>>>> zyl_04
 	<select id="findUserByUId" parameterType="int" resultType="com.pas.model.UserModel">
 		select * from user where u_id = #{value}
 	</select> 
 	<select id="selectUser" resultType="com.pas.model.UserModel">
-	 	select * from user
+	 	select * from user order by create_time desc
 	</select>
-	<select id="findUIdByUsername" parameterType="int" resultType="java.lang.String">
+	<select id="findUIdByUsername" parameterType="java.lang.String" resultType="int">
 	   	select u_id from user where username=#{value}
 	</select>
 	<insert id="insertUser" parameterType="com.pas.model.UserModel">
@@ -23,7 +26,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="deleteUserByUId" parameterType="int">
 	 	delete from user where u_id=#{value}
 	</delete>
-	<update id="updateUserByUId" parameterType="int">
-	  	update user set u_id=#{u_id},username=#{username},password=#{password},status=#{status},create_time=#{create_time}
+	<update id="updateUserByUId" parameterType="com.pas.model.UserModel">
+	  	update user set u_id=#{u_id},username=#{username},password=#{password},status=#{status},create_time=#{create_time} where u_id=#{value}
 	</update>
+	
 </mapper>

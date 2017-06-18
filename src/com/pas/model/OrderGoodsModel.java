@@ -1,11 +1,14 @@
 package com.pas.model;
 
+import java.util.Date;
+
 public class OrderGoodsModel {
 	private int o_g_id;
 	private int o_id;
 	private int g_id;
 	private float discount;
 	private float total;
+	private Date create_time;
 	public int getO_g_id() {
 		return o_g_id;
 	}
@@ -35,5 +38,11 @@ public class OrderGoodsModel {
 	}
 	public void setTotal(float total) {
 		this.total = total;
+	}
+	public Date getCreate_time() {
+		return create_time;
+	}
+	public void setCreate_time(Date create_time) {
+		this.create_time = create_time;
 	}
 }

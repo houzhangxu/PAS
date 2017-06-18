@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="goods">
+	<select id="findGoodsByGId" parameterType="int" resultType="com.pas.model.GoodsModel">
+		select * from goods where g_id=#{value}
+	</select>
+	<select id="selectGoods" resultType="com.pas.model.GoodsModel">
+		select * from goods order by create_time desc
+	</select>
+	<select id="findGIdByGoodsName" parameterType="java.lang.String" resultType="int">
+	   	select g_id from goods where goods_name=#{value}
+	</select>
+	<insert id="insertGoods" parameterType="com.pas.model.GoodsModel">
+		<selectKey keyProperty="g_id" order="AFTER" resultType="int">
+			select last_insert_id()
+		</selectKey>
+		insert into goods values(#{g_id},#{goods_name},#{goods_type},#{price},#{total},#{creator},#{create_time})
+	</insert>
+	<delete id="deleteGoodsGId" parameterType="int">
+		delete from goods where g_id=#{value}
+	</delete>
+	<update id="updateGoodsGId" parameterType="com.pas.model.GoodsModel">
+		update goods set g_id=#{g_id},goods_name=#{goods_name},goods_type=#{goods_type},price=#{price},total=#{total},creator=#{creator},create_time=#{create_time} where g_id=#{value}
+	</update>
+</mapper>

@@ -1,54 +1,42 @@
 package com.pas.model;
 
 import java.util.*;
+
+import javax.xml.crypto.Data;
 public class AdminModel {
-	private int g_id;
-	private String goods_name;
-	private int goods_type;
-	private float price;
-	private float total;
-	private int creator;
-	private Date create_time;
-	public int getG_id() {
-		return g_id;
+	private int a_id;
+	private String admin_name;
+	private String password;
+	private int status;
+	private Data create_time;
+	public int getA_id() {
+		return a_id;
 	}
-	public void setG_id(int g_id) {
-		this.g_id = g_id;
+	public void setA_id(int a_id) {
+		this.a_id = a_id;
 	}
-	public String getGoods_name() {
-		return goods_name;
+	public String getAdmin_name() {
+		return admin_name;
 	}
-	public void setGoods_name(String goods_name) {
-		this.goods_name = goods_name;
+	public void setAdmin_name(String admin_name) {
+		this.admin_name = admin_name;
 	}
-	public int getGoods_type() {
-		return goods_type;
+	public String getPassword() {
+		return password;
 	}
-	public void setGoods_type(int goods_type) {
-		this.goods_type = goods_type;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	public float getPrice() {
-		return price;
+	public int getStatus() {
+		return status;
 	}
-	public void setPrice(float price) {
-		this.price = price;
+	public void setStatus(int status) {
+		this.status = status;
 	}
-	public float getTotal() {
-		return total;
-	}
-	public void setTotal(float total) {
-		this.total = total;
-	}
-	public int getCreator() {
-		return creator;
-	}
-	public void setCreator(int creator) {
-		this.creator = creator;
-	}
-	public Date getCreate_time() {
+	public Data getCreate_time() {
 		return create_time;
 	}
-	public void setCreate_time(Date create_time) {
+	public void setCreate_time(Data create_time) {
 		this.create_time = create_time;
 	}
 }

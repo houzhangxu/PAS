@@ -27,13 +27,6 @@ public class UserDao implements UserDaoImp{
 	}
 
 	@Override
-	public int findUIdByUsername(String username) {
-		// 根据username查询user表中的u_id
-		int u_id=ss.selectOne("user.findUIdByUsername", username);
-		return u_id;
-	}
-
-	@Override
 	public void insertUser(UserModel um) {
 		// 在user表中添加的记录
 		ss.insert("user.insertUser", um);
@@ -49,5 +42,17 @@ public class UserDao implements UserDaoImp{
 	public void updateUserByUId(UserModel um) {
 		// 根据u_id更新user表中的一条记录
 		ss.update("updateUserByUId", um);
+	}
+
+	@Override
+	public int getUIdByUsername(String username) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public String getPasswordByUId(int u_id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

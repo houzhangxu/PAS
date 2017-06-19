@@ -10,8 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectGoodsTpye" resultType="com.pas.model.GoodsTypeModel">
 		select * from goods_type order by create_time desc
 	</select>
-	<select id="findGTIdByName" parameterType="java.lang.String" resultType="int">
+	<select id="getGTIdByName" parameterType="java.lang.String" resultType="int">
 	   	select g_t_id from goods_type where name=#{value}
+	</select>
+	<select id="getGTIdAndName" resultType="com.pas.model.GoodsTypeModel">
+		select g_t_id,name from goods_type 
 	</select>
 	<insert id="insertGoodsType" parameterType="com.pas.model.GoodsTypeModel">
 		<selectKey keyProperty="g_t_id" order="AFTER" resultType="int">

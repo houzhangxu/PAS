@@ -14,12 +14,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyProperty="s_c_id" order="AFTER" resultType="int">
 			select last_insert_id()
 		</selectKey>
-		insert into shopping_cart values(#{s_c_id},#{g_id},#{u_id},#{create_name})
+		insert into shopping_cart values(#{s_c_id},#{g_id},#{u_id},#{total},#{create_name})
 	</insert>
 	<delete id="deleteShoppingCartBySCId" parameterType="int">
 		delete from shopping_cart where s_c_id=#{value}
 	</delete>
 	<update id="updateShoppingCartBySCId" parameterType="com.pas.model.ShoppingCartModel">
-		update shopping_cart set s_c_id=#{s_c_id},g_id=#{g_id},u_id=#{u_id},create_name=#{create_name} where s_c_id=#{value}
+		update shopping_cart set s_c_id=#{s_c_id},g_id=#{g_id},u_id=#{u_id},total=#{total},create_name=#{create_name} where s_c_id=#{value}
 	</update>
 </mapper>

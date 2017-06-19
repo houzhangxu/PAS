@@ -19,7 +19,7 @@ public class GoodsController {
 		System.out.println("---------------------------------------------");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
-		mv.setViewName("goods_detail.jsp");
+		mv.setViewName("goods_detail");
 		return mv;
 	}
 	

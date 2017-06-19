@@ -45,6 +45,10 @@
 	<bean id="user" class="com.pas.dao.UserDao"></bean>
 	
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
-	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+	</bean>
 </beans>

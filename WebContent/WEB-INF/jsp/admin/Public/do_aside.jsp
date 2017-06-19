@@ -9,7 +9,7 @@ String active = request.getParameter("active");
       <!-- Sidebar user panel -->
       <div class="user-panel">
         <div class="pull-left image">
-          <img src="Admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+          <img src="/PAS/static/admin/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
           <p>${sessionScope.admin_name} Admin</p>
@@ -58,7 +58,7 @@ String active = request.getParameter("active");
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="Admin/admin_add.jsp"><i class="fa fa-user-plus"></i> 添加管理员</a></li>
+            <li><a href="/PAS/static/admin/admin_add.jsp"><i class="fa fa-user-plus"></i> 添加管理员</a></li>
             <li><a href="admin_list.do"><i class="fa fa-user-secret"></i> 管理员列表</a></li>
           </ul>
         </li>

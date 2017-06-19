@@ -21,14 +21,14 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping("/admin/st")
+	@RequestMapping("/admin")
 	public ModelAndView handleRequest2(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
 		System.out.println("Fetch Login");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
-		mv.setViewName("/admin/");
+		mv.setViewName("/admin/index");
 		return mv;
 	}
 	

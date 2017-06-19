@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class GoodsController {
 	
-	@RequestMapping("/goods")
+	@RequestMapping("/goods")  //跳转至首页
 	public ModelAndView handleRequest1(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");

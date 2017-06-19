@@ -20,7 +20,9 @@
   </servlet>
   <servlet-mapping>
   	<servlet-name>shop</servlet-name>
-  	<url-pattern>*.pa</url-pattern>
+  	<url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+
   
 </web-app>

@@ -45,6 +45,21 @@
 	<bean id="user" class="com.pas.dao.UserDao"></bean>
 	
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+	<!-- 配置静态资源 -->
+	<!-- 后台静态资源 -->
+	<mvc:resources mapping="/static/admin/**" location="/static/admin/"/>
+	<!-- 前台静态资源 -->
+	<mvc:resources mapping="/static/home/**" location="/static/home/"/>
+	<!-- 
+	<mvc:resources mapping="/admin/**/static/admin/**" location="/static/admin/"/>
+	<mvc:resources mapping="/admin/*/static/admin/**" location="/static/admin/"/>
+	 -->
+	
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+	</bean>
 	
 </beans>

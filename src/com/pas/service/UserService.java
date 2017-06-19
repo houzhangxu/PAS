@@ -9,22 +9,45 @@ public class UserService implements UserServiceImp{
 
 	@Autowired
 	private UserDaoImp dao;
-	
+
 	@Override
-	public int login(String username, String password) {
-		// TODO Auto-generated method stub
-		UserModel um = new UserModel();
-		um.setUsername(username);
-		um.setPassword(password);
+	public int doLogin(String username, String password) {
 		
-		int uid = dao.findUIdByUsername("zhangsan");
-		
-		if(uid == 0){
-			return 0;
+		int uid = dao.getUIdByUsername(username);
+		if(uid==0){
+			return -1;
+		}else{
+			if(password.equals(dao.getPasswordByUId(uid))){
+				return 1;
+			}
 		}
 		
-		return uid;
+		return 0;
 	}
+
+	@Override
+	public int doRegister(UserModel um) {
+		
+		dao.insertUser(um);
+		
+		if(um.getU_id()!=0){
+			return um.getU_id();
+		}
+		
+		
+		return 0;
+	}
+
+	@Override
+	public boolean checkName(String username) {
+		
+		if(dao.getUIdByUsername(username)>0){
+			return true;
+		}
+		
+		return false;
+	}
+	
 
 	
 	

@@ -14,5 +14,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <mapper resource="mapper/order_goods.xml"/>
 <mapper resource="mapper/pay_method.xml"/>
 <mapper resource="mapper/shopping_cart.xml"/>
+<mapper resource="mapper/capital.xml"/>
 </mappers>
 </configuration>

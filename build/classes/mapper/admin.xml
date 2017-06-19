@@ -10,8 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectAdmin" resultType="com.pas.model.AdminModel">
 		select * from admin order by create_time desc
 	</select>
-	<select id="findAIdByAdminname" parameterType="java.lang.String" resultType="int">
+	<select id="getAIdByAdminname" parameterType="java.lang.String" resultType="int">
 	   	select a_id from admin where admin_name=#{value}
+	</select>
+	<select id="getPasswordByAId" parameterType="int" resultType="java.lang.String">
+	   	select password from admin where a_id=#{value}
 	</select>
 	<insert id="insertAdmin" parameterType="com.pas.model.AdminModel">
 		<selectKey keyProperty="a_id" order="AFTER" resultType="int">

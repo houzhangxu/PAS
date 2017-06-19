@@ -10,8 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectUser" resultType="com.pas.model.UserModel">
 	 	select * from user order by create_time desc
 	</select>
-	<select id="findUIdByUsername" parameterType="java.lang.String" resultType="int">
+	<select id="getUIdByUsername" parameterType="java.lang.String" resultType="int">
 	   	select u_id from user where username=#{value}
+	</select>
+	<select id="getPasswordByUId" parameterType="int" resultType="java.lang.String">
+		select password from user where u_id=#{value}
 	</select>
 	<insert id="insertUser" parameterType="com.pas.model.UserModel">
 	    <selectKey keyProperty="u_id" order="AFTER" resultType="int">

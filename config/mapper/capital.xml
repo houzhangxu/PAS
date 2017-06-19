@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="capital">
+	<select id="findCapitalByUId" parameterType="int" resultType="com.pas.model.CapitalModel">
+		select * from capital where u_id=#{value}
+	</select>
+	<select id="selectCapital" resultType="com.pas.model.CapitalModel">
+		select * from capital order by create_time desc
+	</select>
+	<insert id="insertCapital" parameterType="com.pas.model.CapitalModel">
+		<selectKey keyProperty="c_id" order="AFTER" resultType="int">
+			select last_insert_id()
+		</selectKey>
+		insert into capital values(#{u_id},#{balance},#{create_time})
+	</insert>
+	<delete id="deleteCapitalByUId" parameterType="int">
+		delete from capital where u_id=#{u_id}
+	</delete>
+	<update id="updateCapitalByCId" parameterType="com.pas.model.CapitalModel">
+		update capital set u_id=#{u_id},balance=#{balance},create_time=#{create_time} where c_id=#{value}
+	</update>
+</mapper>

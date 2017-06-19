@@ -28,7 +28,7 @@
 	
 	<bean id="da" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/pa"></property>
+		<property name="url" value="jdbc:mysql://locahost:3306/pa"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>
@@ -45,6 +45,11 @@
 	<bean id="user" class="com.pas.dao.UserDao"></bean>
 	
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- 前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/" />
+        <!-- 后缀 -->
+        <property name="suffix" value=".jsp" />
+	</bean>
 	
 </beans>

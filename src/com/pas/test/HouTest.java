@@ -33,9 +33,9 @@ public class HouTest {
 		
 		UserModel um1=new UserModel();
 		//um1.setU_id(4);
-		um1.setUsername("lisi");
-		um1.setPassword("1464");
-		um1.setStatus(0);
+		um1.setUsername("hou");
+		um1.setPassword("123456");
+		um1.setStatus(1);
 		um1.setCreate_time(new Date().getTime());
 		user.insertUser(um1);
 		System.out.println(um1.getU_id());

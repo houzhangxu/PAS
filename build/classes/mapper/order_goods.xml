@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order_goods">
+	<select id="findOrderGoodsById" parameterType="int" resultType="com.pas.model.OrderGoodsModel">
+		select * from order_goods where o_g_id=#{value}
+	</select>
+	<select id="selectOrderGoods" resultType="com.pas.model.OrderGoodsModel">
+		select * from order_goods order by create_time desc
+	</select>
+	<insert id="insertOrderGoods" parameterType="com.pas.model.OrderGoodsModel">
+		<selectKey keyProperty="o_g_id" order="AFTER" resultType="int">
+			select last_insert_id()
+		</selectKey>
+		insert into order_goods values(#{o_g_id},#{o_id},#{g_id},#{discount},#{total},#{create_time})
+	</insert>
+	<delete id="deleteOrderGoodsByOGId" parameterType="int">
+		delete from order_goods where o_g_id=#{value}
+	</delete>
+	<update id="updateOrderGoodsByOGId" parameterType="com.pas.model.OrderGoodsModel">
+		update order_goods set o_g_id=#{o_g_id},o_id=#{o_id},g_id=#{g_id},discount=#{discount},total=#{total},create_time=#{create_time} where o_g_id=#{value}
+	</update>
+</mapper>

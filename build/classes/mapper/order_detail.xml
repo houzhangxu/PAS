@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="order_detail">
+	<select id="findOrderDetailByODId" parameterType="int" resultType="com.pas.model.OrderDetailModel">
+		select * from order_detail where o_d_id=#{value}
+	</select>
+	<select id="selectOrderDetail" resultType="com.pas.model.OrderDetailModel">
+		select * from order_detail order by create_time desc
+	</select>
+	<insert id="insertOrderDetail" parameterType="com.pas.model.OrderDetailModel">
+		<selectKey keyProperty="o_d_id" order="AFTER" resultType="int">
+			select last_insert_id()
+		</selectKey>
+		insert into order_detail values(#{o_d_id},#{o_id},#{t_id},#{pay_method},#{create_time})
+	</insert>
+	<delete id="deleteOrderDetailByODId" parameterType="int">
+		delete from order_detail where o_d_id=#{value}
+	</delete>
+	<update id="updateOrderDetailByODId" parameterType="com.pas.model.OrderDetailModel">
+		update order_detail set o_d_id=#{o_d_id},o_id=#{o_id},t_id=#{t_id},pay_method=#{pay_method},create_time=#{create_time} where o_d_id=#{value}
+	</update>
+</mapper>

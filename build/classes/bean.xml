@@ -26,6 +26,7 @@
 	<context:component-scan base-package="com.pas.controller"></context:component-scan>
 	<context:component-scan base-package="com.pas.dao"></context:component-scan>
 	
+	
 	<bean id="da" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
 		<property name="url" value="jdbc:mysql://localhost:3306/pa"></property>
@@ -43,7 +44,9 @@
 	</bean>
 	
 	<bean id="user" class="com.pas.dao.UserDao"></bean>
+	<bean id="goods" class="com.pas.dao.GoodsDao"></bean>
 	
+	<bean id="se" class="com.pas.service.UserService"></bean>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
 	

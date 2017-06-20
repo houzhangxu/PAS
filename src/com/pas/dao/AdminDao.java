@@ -43,15 +43,15 @@ public class AdminDao implements AdminDaoImp {
 	}
 
 	@Override
-	public void deleteAdminByAId(int a_id) {
+	public int deleteAdminByAId(int a_id) {
 		// TODO Auto-generated method stub
-		ss.delete("admin.deleteAdminByAId", a_id);
+		return ss.delete("admin.deleteAdminByAId", a_id);
 	}
 
 	@Override
-	public void updateAdminByAId(AdminModel am) {
+	public int updateAdminByAId(AdminModel am) {
 		// TODO Auto-generated method stub
-		ss.update("admin.updateAdminByAId", am);
+		return ss.update("admin.updateAdminByAId", am);
 	}
 
 }

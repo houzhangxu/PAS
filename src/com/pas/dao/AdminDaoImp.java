@@ -10,6 +10,6 @@ public interface AdminDaoImp {
 	public int getAIdByAdminname(String admin_name);
 	public String getPasswordByAId(int a_id);
 	public void insertAdmin(AdminModel am);
-	public void deleteAdminByAId(int a_id);
-	public void updateAdminByAId(AdminModel am);
+	public int deleteAdminByAId(int a_id);
+	public int updateAdminByAId(AdminModel am);
 }

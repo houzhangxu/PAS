@@ -9,6 +9,6 @@ public interface OrdersDaoImp {
 	public OrdersModel findOrdersByUId(int u_id);
 	public List<OrdersModel> selectOrders();
 	public void insertOrders(OrdersModel om);
-	public void deleteOrdersByOId(int o_id);
-	public void updateOrdersByOId(OrdersModel om);
+	public int deleteOrdersByOId(int o_id);
+	public int updateOrdersByOId(OrdersModel om);
 }

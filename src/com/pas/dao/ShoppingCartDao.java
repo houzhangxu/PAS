@@ -31,15 +31,15 @@ public class ShoppingCartDao implements ShoppingCartDaoImp {
 	}
 
 	@Override
-	public void deleteShoppingCartBySCId(int s_c_id) {
+	public int deleteShoppingCartBySCId(int s_c_id) {
 		// TODO Auto-generated method stub
-		ss.delete("shopping_cart.deleteShoppingCartBySCId", s_c_id);
+		return ss.delete("shopping_cart.deleteShoppingCartBySCId", s_c_id);
 	}
 
 	@Override
-	public void updateShoppingCartBySCId(ShoppingCartModel scm) {
+	public int updateShoppingCartBySCId(ShoppingCartModel scm) {
 		// TODO Auto-generated method stub
-		ss.update("shopping_cart.updateShoppingCartBySCId", scm);
+		return ss.update("shopping_cart.updateShoppingCartBySCId", scm);
 	}
 
 }

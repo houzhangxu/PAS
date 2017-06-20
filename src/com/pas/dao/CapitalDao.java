@@ -30,15 +30,15 @@ public class CapitalDao implements CapitalDaoImp {
 	}
 
 	@Override
-	public void deleteCapitalByUId(int u_id) {
+	public int deleteCapitalByUId(int u_id) {
 		// TODO Auto-generated method stub
-		ss.delete("capital.deleteCapitalByUId", u_id);
+		return ss.delete("capital.deleteCapitalByUId", u_id);
 	}
 
 	@Override
-	public void updateCapitalByCId(CapitalModel cm) {
+	public int updateCapitalByCId(CapitalModel cm) {
 		// TODO Auto-generated method stub
-		ss.update("capital.updateCapitalByCId", cm);
+		return ss.update("capital.updateCapitalByCId", cm);
 	}
 
 }

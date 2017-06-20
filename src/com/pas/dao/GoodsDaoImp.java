@@ -9,7 +9,7 @@ public interface GoodsDaoImp {
 	public List<GoodsModel> selectGoods();
 	public int getGIdByGoodsName(String goods_name);
 	public void insertGoods(GoodsModel gm);
-	public void deleteGoodsGId(int g_id);
-	public void updateGoodsGId(GoodsModel gm);
+	public int deleteGoodsGId(int g_id);
+	public int updateGoodsGId(GoodsModel gm);
 	public List<GoodsModel> getGoodsNameByGoodsType(int goods_type);
 }

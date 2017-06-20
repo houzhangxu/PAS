@@ -10,6 +10,6 @@ public interface UserDaoImp {
 	public int getUIdByUsername(String username);
 	public String getPasswordByUId(int u_id);
 	public void insertUser(UserModel um);
-	public void deleteUserByUId(int u_id);
-	public void updateUserByUId(UserModel um);
+	public int deleteUserByUId(int u_id);
+	public int updateUserByUId(UserModel um);
 }

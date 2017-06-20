@@ -30,15 +30,15 @@ public class OrderDetailDao implements OrderDetailDaoImp {
 	}
 
 	@Override
-	public void deleteOrderDetailByODId(int o_d_id) {
+	public int deleteOrderDetailByODId(int o_d_id) {
 		// TODO Auto-generated method stub
-		ss.delete("order_detail.deleteOrderDetailByODId", o_d_id);
+		return ss.delete("order_detail.deleteOrderDetailByODId", o_d_id);
 	}
 
 	@Override
-	public void updateOrderDetailByODId(OrderDetailModel odm) {
+	public int updateOrderDetailByODId(OrderDetailModel odm) {
 		// TODO Auto-generated method stub
-		ss.update("order_detail.updateOrderDetailByODId", odm);
+		return ss.update("order_detail.updateOrderDetailByODId", odm);
 	}
 
 }

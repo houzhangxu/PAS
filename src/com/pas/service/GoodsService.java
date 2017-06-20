@@ -16,4 +16,13 @@ public class GoodsService implements GoodsServiceImp {
 		return dao.findGoodsByGId(goods_id);
 	}
 
+	@Override
+	public int addGoods(GoodsModel gm) {
+		// TODO Auto-generated method stub
+		dao.insertGoods(gm);
+		return 0;
+	}
+	
+	
+
 }

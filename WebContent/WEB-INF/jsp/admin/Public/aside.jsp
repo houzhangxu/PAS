@@ -25,7 +25,7 @@
           <ul class="treeview-menu">
            
             <li>
-              <a href="../user_list.do"><i class="fa fa-users"></i> 用户列表
+              <a href="/PAS/admin/user"><i class="fa fa-users"></i> 用户列表
               </a>
             </li>
           </ul>
@@ -40,8 +40,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="goods_add.jsp"><i class="fa fa-cart-plus"></i> 添加商品</a></li>
-            <li><a href="../goods_list.do"><i class="fa fa-cart-arrow-down"></i> 商品列表</a></li>
+            <li><a href="/PAS/admin/goods/add"><i class="fa fa-cart-plus"></i> 添加商品</a></li>
+            <li><a href="/PAS/admin/goods"><i class="fa fa-cart-arrow-down"></i> 商品列表</a></li>
           </ul>
         </li>
 
@@ -53,8 +53,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="admin_add.jsp"><i class="fa fa-user-plus"></i> 添加管理员</a></li>
-            <li><a href="../admin_list.do"><i class="fa fa-user-secret"></i> 管理员列表</a></li>
+            <li><a href="/PAS/admin/manager/add"><i class="fa fa-user-plus"></i> 添加管理员</a></li>
+            <li><a href="/PAS/admin/manager"><i class="fa fa-user-secret"></i> 管理员列表</a></li>
           </ul>
         </li>
 

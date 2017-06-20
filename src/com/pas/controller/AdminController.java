@@ -1,29 +1,30 @@
 package com.pas.controller;
 
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pas.model.GoodsModel;
+import com.pas.service.GoodsService;
+import com.pas.service.GoodsServiceImp;
+import com.pas.service.UserService;
+
 @Controller
+@RequestMapping("/admin")
 public class AdminController {
 	
-	//登录
-	@RequestMapping("/admin/login")
-	public ModelAndView adminLogin(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-//		String username = request.getParameter("username");
-		System.out.println("Fetch Login");
-		ModelAndView mv = new ModelAndView();
-		//mv.addObject("list", "123456");
-		mv.setViewName("/admin/login");
-		return mv;
-	}
+	private UserService us = new UserService();
+	private GoodsServiceImp gs = new GoodsService();
+	
 	
 	//首页
-	@RequestMapping("/admin")
+	@RequestMapping("")
 	public ModelAndView admin(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
@@ -34,12 +35,26 @@ public class AdminController {
 		return mv;
 	}
 	
-	//用户列表
-	@RequestMapping("/admin/user")
-	public ModelAndView adminUser(HttpServletRequest request,
+	//登录
+	@RequestMapping("/login")
+	public ModelAndView login(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
 		System.out.println("Fetch Login");
+		ModelAndView mv = new ModelAndView();
+		//mv.addObject("list", "123456");
+		mv.setViewName("/admin/login");
+		return mv;
+	}
+	
+
+	
+	//用户列表
+	@RequestMapping("/user")
+	public ModelAndView user(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+//		String username = request.getParameter("username");
+		System.out.println("Fetch User");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
 		mv.setViewName("/admin/user_list");
@@ -47,11 +62,11 @@ public class AdminController {
 	}
 	
 	//商品列表
-	@RequestMapping("/admin/goods")
-	public ModelAndView adminGoods(HttpServletRequest request,
+	@RequestMapping("/goods")
+	public ModelAndView goods(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
-		System.out.println("Fetch Login");
+		System.out.println("Fetch Goods");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
 		mv.setViewName("/admin/goods_list");
@@ -59,23 +74,103 @@ public class AdminController {
 	}
 	
 	//添加商品
-	@RequestMapping("/admin/goods/add")
-	public ModelAndView adminGoodsAdd(HttpServletRequest request,
+	@RequestMapping(path="/goods/add",method=RequestMethod.GET)
+	public ModelAndView goodsAdd(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
-		System.out.println("Fetch Login");
+		System.out.println("Fetch Goods Add");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
 		mv.setViewName("/admin/goods_add");
 		return mv;
 	}
 	
-	//管理员列表
-	@RequestMapping("/admin/manager")
-	public ModelAndView adminManager(HttpServletRequest request,
+	//添加商品
+	@RequestMapping(path="/goods/doadd",method={RequestMethod.GET,RequestMethod.POST})
+	public ModelAndView goodsDoAdd(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
-		System.out.println("Fetch Login");
+		ModelAndView mv = new ModelAndView();
+		
+		if(this.isEmpty(request.getParameter("goods_name"))){
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "商品名称未输入");
+			return mv;
+		}
+		
+		if(this.isEmpty(request.getParameter("goods_main"))){
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "商品详情未输入");
+			return mv;
+		}
+		
+		if(this.isEmpty(request.getParameter("price"))){
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "价格未输入");
+			return mv;
+		}
+		
+		if(this.isEmpty(request.getParameter("total"))){
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "库存未输入");
+			return mv;
+		}
+		
+		String name = request.getParameter("goods_name").trim();
+		String main = request.getParameter("goods_main").trim();
+		double price = 0;
+		double total = 0;
+		
+		try {
+			price = Double.parseDouble(request.getParameter("price"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "价格输入不合法");
+			return mv;
+		}
+		
+		try {
+			total = Double.parseDouble(request.getParameter("total"));
+		} catch (Exception e) {
+			// TODO: handle exception
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "库存输入不合法");
+			return mv;
+		}
+		
+		GoodsModel gm = new GoodsModel();
+		gm.setGoods_name(name); //设置名称
+		gm.setGoods_main(main);  //设置详情
+		gm.setPrice(price);  //设定价格
+		gm.setTotal(total);  //设定库存
+		gm.setGoods_type(1);  //设定商品类型
+		gm.setCreator(1);  //设定创建者
+		gm.setCreate_time(new Date().getTime());
+		
+		
+		
+		System.out.println("Fetch Goods DoAdd");
+		System.out.println(name);
+		System.out.println(main);
+		System.out.println(price);
+		System.out.println(total);
+		
+		gs.addGoods(gm);
+		
+		//mv.addObject("list", "123456");
+		//mv.setViewName("/admin/goods_add");
+		//response.sendRedirect("/PAS/admin/goods");
+		mv.setViewName("redirect:/admin/goods");  //重定向
+		return mv;
+	}
+	
+	//管理员列表
+	@RequestMapping("/manager")
+	public ModelAndView manager(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+//		String username = request.getParameter("username");
+		System.out.println("Fetch Manager");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
 		mv.setViewName("/admin/admin_list");
@@ -83,11 +178,11 @@ public class AdminController {
 	}
 	
 	//管理员添加
-	@RequestMapping("/admin/manager/add")
-	public ModelAndView adminManagerAdd(HttpServletRequest request,
+	@RequestMapping("/manager/add")
+	public ModelAndView managerAdd(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
-		System.out.println("Fetch Login");
+		System.out.println("Fetch Manager Add");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
 		mv.setViewName("/admin/admin_add");
@@ -95,15 +190,34 @@ public class AdminController {
 	}
 	
 	//所有订单
-	@RequestMapping("/admin/orders")
+	@RequestMapping("/orders")
 	public ModelAndView adminOrders(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
-		System.out.println("Fetch Login");
+		System.out.println("Fetch Order");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
 		mv.setViewName("/admin/index");
 		return mv;
+	}
+	
+	//退出登录
+	@RequestMapping("/sigout")
+	public ModelAndView sigout(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+//		String username = request.getParameter("username");
+		System.out.println("Fetch Sigout");
+		ModelAndView mv = new ModelAndView();
+		//mv.addObject("list", "123456");
+		mv.setViewName("/admin/index");
+		return mv;
+	}
+	
+	private boolean isEmpty(String name){
+		if(name == null || name.trim().isEmpty()){
+			return true;
+		}
+		return false;
 	}
 	
 }

@@ -31,14 +31,14 @@ public class HouTest {
 		System.out.println(um.getU_id());
 		System.out.println(um.getUsername());
 		
-		UserModel um1=new UserModel();
-		//um1.setU_id(4);
-		um1.setUsername("lisi");
-		um1.setPassword("1464");
-		um1.setStatus(0);
-		um1.setCreate_time(new Date().getTime());
-		user.insertUser(um1);
-		System.out.println(um1.getU_id());
+//		UserModel um1=new UserModel();
+//		//um1.setU_id(4);
+//		um1.setUsername("lisi");
+//		um1.setPassword("1464");
+//		um1.setStatus(0);
+//		um1.setCreate_time(new Date().getTime());
+//		user.insertUser(um1);
+//		System.out.println(um1.getU_id());
 	}
 	
 }

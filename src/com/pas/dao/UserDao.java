@@ -15,32 +15,27 @@ public class UserDao implements UserDaoImp{
 
 	@Override
 	public UserModel findUserByUId(int u_id) {
-		// ����u_id��ѯuser���е�һ����¼
 		return ss.selectOne("user.findUserByUId",u_id);
 	}
 
 	@Override
 	public List<UserModel> selectUser() {
-		// ��ѯuser���еļ�¼
 		List<UserModel> list=ss.selectList("user.selectUser");
 		return list;
 	}
 
 	@Override
 	public void insertUser(UserModel um) {
-		// ��user������ӵļ�¼
 		ss.insert("user.insertUser", um);
 	}
 
 	@Override
 	public int deleteUserByUId(int u_id) {
-		// ����u_idɾ��user���еļ�¼
 		return ss.delete("user.deleteUserByUId", u_id);
 	}
 
 	@Override
 	public int updateUserByUId(UserModel um) {
-		// ����u_id����user���е�һ����¼
 		return ss.update("updateUserByUId", um);
 	}
 

@@ -47,6 +47,13 @@ public class UserService implements UserServiceImp{
 		
 		return false;
 	}
+
+	@Override
+	public UserModel findUser(int u_id) {
+		// TODO Auto-generated method stub
+		
+		return dao.findUserByUId(u_id);
+	}
 	
 
 	

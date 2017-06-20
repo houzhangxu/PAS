@@ -25,6 +25,7 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	<context:component-scan base-package="com.pas.controller"></context:component-scan>
 	<context:component-scan base-package="com.pas.dao"></context:component-scan>
+	<context:component-scan base-package="com.pas.service"></context:component-scan>
 	
 	<bean id="da" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
@@ -43,6 +44,16 @@
 	</bean>
 	
 	<bean id="user" class="com.pas.dao.UserDao"></bean>
+	<bean id="goods" class="com.pas.dao.GoodsDao"></bean>
+	<bean id="admin" class="com.pas.dao.AdminDao"></bean>
+	<bean id="capital" class="com.pas.dao.CapitalDao"></bean>
+	<bean id="goods_type" class="com.pas.dao.GoodsDao"></bean>
+	<bean id="orders" class="com.pas.dao.OrdersDao"></bean>
+	<bean id="order_detail" class="com.pas.dao.OrderDetailDao"></bean>
+	<bean id="order_goods" class="com.pas.dao.OrderGoodsDao"></bean>
+	<bean id="pay_method" class="com.pas.dao.PayMethodDao"></bean>
+	
+	<bean id="userservice" class="com.pas.service.UserService"></bean>
 	
 	
 	<!-- 配置静态资源 -->

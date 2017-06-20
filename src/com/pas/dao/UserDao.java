@@ -15,33 +15,33 @@ public class UserDao implements UserDaoImp{
 
 	@Override
 	public UserModel findUserByUId(int u_id) {
-		// ¸ù¾Ýu_id²éÑ¯user±íÖÐµÄÒ»Ìõ¼ÇÂ¼
+		// ï¿½ï¿½ï¿½ï¿½u_idï¿½ï¿½Ñ¯userï¿½ï¿½ï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
 		return ss.selectOne("user.findUserByUId",u_id);
 	}
 
 	@Override
 	public List<UserModel> selectUser() {
-		// ²éÑ¯user±íÖÐµÄ¼ÇÂ¼
+		// ï¿½ï¿½Ñ¯userï¿½ï¿½ï¿½ÐµÄ¼ï¿½Â¼
 		List<UserModel> list=ss.selectList("user.selectUser");
 		return list;
 	}
 
 	@Override
 	public void insertUser(UserModel um) {
-		// ÔÚuser±íÖÐÌí¼ÓµÄ¼ÇÂ¼
+		// ï¿½ï¿½userï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÓµÄ¼ï¿½Â¼
 		ss.insert("user.insertUser", um);
 	}
 
 	@Override
-	public void deleteUserByUId(int u_id) {
-		// ¸ù¾Ýu_idÉ¾³ýuser±íÖÐµÄ¼ÇÂ¼
-		ss.delete("user.deleteUserByUId", u_id);
+	public int deleteUserByUId(int u_id) {
+		// ï¿½ï¿½ï¿½ï¿½u_idÉ¾ï¿½ï¿½userï¿½ï¿½ï¿½ÐµÄ¼ï¿½Â¼
+		return ss.delete("user.deleteUserByUId", u_id);
 	}
 
 	@Override
-	public void updateUserByUId(UserModel um) {
-		// ¸ù¾Ýu_id¸üÐÂuser±íÖÐµÄÒ»Ìõ¼ÇÂ¼
-		ss.update("updateUserByUId", um);
+	public int updateUserByUId(UserModel um) {
+		// ï¿½ï¿½ï¿½ï¿½u_idï¿½ï¿½ï¿½ï¿½userï¿½ï¿½ï¿½Ðµï¿½Ò»ï¿½ï¿½ï¿½ï¿½Â¼
+		return ss.update("updateUserByUId", um);
 	}
 
 	@Override

@@ -10,7 +10,7 @@ public interface GoodsTpyeDaoImp {
 	public List<GoodsTypeModel> selectGoodsTpye();
 	public int getGTIdByName(String name);
 	public void insertGoodsType(GoodsTypeModel gm);
-	public void deleteGoodsTypeByGTId(int t_g_id);
-	public void updateGoodsTypeByGTId(GoodsTypeModel gm);
+	public int deleteGoodsTypeByGTId(int t_g_id);
+	public int updateGoodsTypeByGTId(GoodsTypeModel gm);
 	public List<GoodsTypeModel> getGTIdAndName();
 }

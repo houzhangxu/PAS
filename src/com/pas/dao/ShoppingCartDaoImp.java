@@ -8,6 +8,6 @@ public interface ShoppingCartDaoImp {
 	public ShoppingCartModel findShoppingCartBySCId(int s_c_id);
 	public List<ShoppingCartModel> selectShoppingCart();
 	public void insertShoppingCart(ShoppingCartModel scm);
-	public void deleteShoppingCartBySCId(int s_c_id);
-	public void updateShoppingCartBySCId(ShoppingCartModel scm);
+	public int deleteShoppingCartBySCId(int s_c_id);
+	public int updateShoppingCartBySCId(ShoppingCartModel scm);
 }

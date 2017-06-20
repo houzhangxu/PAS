@@ -36,15 +36,15 @@ public class OrdersDao implements OrdersDaoImp {
 	}
 
 	@Override
-	public void deleteOrdersByOId(int o_id) {
+	public int deleteOrdersByOId(int o_id) {
 		// TODO Auto-generated method stub
-		ss.delete("orders.deleteOrdersByOId", o_id);
+		return ss.delete("orders.deleteOrdersByOId", o_id);
 	}
 
 	@Override
-	public void updateOrdersByOId(OrdersModel om) {
+	public int updateOrdersByOId(OrdersModel om) {
 		// TODO Auto-generated method stub
-		ss.update("orders.updateOrdersByOId", om);
+		return ss.update("orders.updateOrdersByOId", om);
 	}
 
 }

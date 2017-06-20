@@ -30,15 +30,15 @@ public class PayMethodDao implements PayMethodDaoImp {
 	}
 
 	@Override
-	public void deletePayMethodByPId(int p_id) {
+	public int deletePayMethodByPId(int p_id) {
 		// TODO Auto-generated method stub
-		ss.delete("pay_method.deletePayMethodByPId", p_id);
+		return ss.delete("pay_method.deletePayMethodByPId", p_id);
 	}
 
 	@Override
-	public void updatePayMethodByPId(PayMethodModel pmm) {
+	public int updatePayMethodByPId(PayMethodModel pmm) {
 		// TODO Auto-generated method stub
-		ss.update("pay_method.updatePayMethodByPId", pmm);
+		return ss.update("pay_method.updatePayMethodByPId", pmm);
 	}
 
 }

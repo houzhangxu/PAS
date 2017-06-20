@@ -8,6 +8,6 @@ public interface CapitalDaoImp {
 	public CapitalModel findCapitalByUId(int u_id);
 	public List<CapitalModel> selectCapital();
 	public void insertCapital(CapitalModel cm);
-	public void deleteCapitalByUId(int u_id);
-	public void updateCapitalByCId(CapitalModel cm);
+	public int deleteCapitalByUId(int u_id);
+	public int updateCapitalByCId(CapitalModel cm);
 }

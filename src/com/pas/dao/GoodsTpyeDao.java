@@ -37,15 +37,15 @@ public class GoodsTpyeDao implements GoodsTpyeDaoImp {
 	}
 
 	@Override
-	public void deleteGoodsTypeByGTId(int t_g_id) {
+	public int deleteGoodsTypeByGTId(int t_g_id) {
 		// TODO Auto-generated method stub
-		ss.delete("goods_type.deleteGoodsTypeByGTId", t_g_id);
+		return ss.delete("goods_type.deleteGoodsTypeByGTId", t_g_id);
 	}
 
 	@Override
-	public void updateGoodsTypeByGTId(GoodsTypeModel gm) {
+	public int updateGoodsTypeByGTId(GoodsTypeModel gm) {
 		// TODO Auto-generated method stub
-		ss.update("goods_type.updateGoodsTypeByGTId", gm);
+		return ss.update("goods_type.updateGoodsTypeByGTId", gm);
 	}
 
 	@Override

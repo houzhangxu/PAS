@@ -37,15 +37,15 @@ public class GoodsDao implements GoodsDaoImp {
 	}
 
 	@Override
-	public void deleteGoodsGId(int g_id) {
+	public int deleteGoodsGId(int g_id) {
 		// TODO Auto-generated method stub
-		ss.update("goods.deleteGoodsGId", g_id);
+		return ss.update("goods.deleteGoodsGId", g_id);
 	}
 
 	@Override
-	public void updateGoodsGId(GoodsModel gm) {
+	public int updateGoodsGId(GoodsModel gm) {
 		// TODO Auto-generated method stub
-		ss.update("goods.updateGoodsGId", gm);
+		return ss.update("goods.updateGoodsGId", gm);
 	}
 
 	@Override

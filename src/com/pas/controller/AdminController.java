@@ -77,7 +77,7 @@ public class AdminController {
 		System.out.println("Fetch Goods");
 		ModelAndView mv = new ModelAndView();
 
-		List<GoodsModel> list = gs.getAllGoods();
+		List<GoodsModel> list = gs.getAllGoodsName();
 
 		mv.addObject("list", list);
 		mv.setViewName("/admin/goods_list");

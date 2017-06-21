@@ -49,10 +49,22 @@ public class GoodsDao implements GoodsDaoImp {
 	}
 
 	@Override
-	public List<GoodsModel> getGoodsNameByGoodsType(int goods_type) {
+	public List<GoodsModel> getGoodsNameByGoodsType(String goods_type) {
 		// TODO Auto-generated method stub
 		List<GoodsModel> list=ss.selectList("goods.getGoodsNameByGoodsType", goods_type);
 		return list;
+	}
+
+	@Override
+	public List<GoodsModel> getAllGoodsName() {
+		// TODO Auto-generated method stub
+		return ss.selectList("goods.getAllGoodsName");
+	}
+
+	@Override
+	public List<GoodsModel> selectGoodsByGoodsName(String goods_name) {
+		// TODO Auto-generated method stub
+		return ss.selectList("goods.selectGoodsByGoodsName",goods_name);
 	}
 
 }

@@ -11,5 +11,7 @@ public interface GoodsDaoImp {
 	public void insertGoods(GoodsModel gm);
 	public int deleteGoodsGId(int g_id);
 	public int updateGoodsGId(GoodsModel gm);
-	public List<GoodsModel> getGoodsNameByGoodsType(int goods_type);
+	public List<GoodsModel> getGoodsNameByGoodsType(String goods_type);
+	public List<GoodsModel> getAllGoodsName();
+	public List<GoodsModel> selectGoodsByGoodsName(String goods_name);
 }

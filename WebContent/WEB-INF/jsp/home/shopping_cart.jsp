@@ -8,12 +8,12 @@
 
 		<title>购物车页面</title>
 
-		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
-		<link href="basic/css/demo.css" rel="stylesheet" type="text/css" />
-		<link href="css/cartstyle.css" rel="stylesheet" type="text/css" />
-		<link href="css/optstyle.css" rel="stylesheet" type="text/css" />
+		<link href="/PAS/static/home/AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
+		<link href="/PAS/static/home/basic/css/demo.css" rel="stylesheet" type="text/css" />
+		<link href="/PAS/static/home/css/cartstyle.css" rel="stylesheet" type="text/css" />
+		<link href="/PAS/static/home/css/optstyle.css" rel="stylesheet" type="text/css" />
 
-		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="/PAS/static/home/js/jquery.js"></script>
 
 	</head>
 
@@ -164,13 +164,6 @@
  -->
 				</div>
 
-				<div class="footer">
-					<div class="footer-bd">
-						<p style="text-align: center;">
-							<em>© 2015-2025 PA.com 版权所有</em>
-						</p>
-					</div>
-				</div>
 
 			</div>
 
@@ -232,6 +225,8 @@
 					</form>
 				</div>
 			</div>
+		<jsp:include page="Public/footer.jsp" />
+			
 		<!--引导 -->
 		<div class="navCir">
 			<li><a href="home.html"><i class="am-icon-home "></i>首页</a></li>

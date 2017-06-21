@@ -11,5 +11,7 @@ public interface GoodsServiceImp {
    public List<GoodsModel> getAllGoods();
    public int updateGoods(GoodsModel gm);
    public int deleteGoods(int g_id);
-   
+   public List<GoodsModel> getGoodsByName(String goods_name);
+   public List<GoodsModel> getAllGoodsName();
+   public List<GoodsModel> getGoodsNameByType(String goods_type);
 }

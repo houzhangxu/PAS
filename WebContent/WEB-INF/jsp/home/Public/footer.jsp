@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8"%>
-<div class="shopMainbg" style="position:fixed;bottom:0px;">
+<div class="shopMainbg" style="position:fixed;bottom:0px;background: #f5f5f5;width:100%;">
 				<div class="shopMain" id="shopmain">
-					<div class="footer">
+					<div class="footer" style="border:0;margin-left: auto;">
 
 						<div class="footer-bd ">
 							<p style="text-align: center;">

@@ -13,12 +13,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getGIdByGoodsName" parameterType="java.lang.String" resultType="int">
 	   	select g_id from goods where goods_name=#{value}
 	</select>
-	<select id="getGoodsNameByGoodsType" parameterType="int" resultType="com.pas.model.GoodsModel">
+	<select id="getGoodsNameByGoodsType" parameterType="java.lang.String" resultType="com.pas.model.GoodsModel">
 		select g_id,goods_name from goods where goods_type=#{value}
 	</select>
-	<select id="getGoodsName" parameterType="com.pas.model.GoodsModel">
-		select g_id,goods_name from goods
+	<select id="getAllGoodsName" parameterType="com.pas.model.GoodsModel" resultType="com.pas.model.GoodsModel">
+		select g_id,goods_name,create_time from goods
 	</select>
+	<select id="selectGoodsByGoodsName" parameterType="java.lang.String" resultType="com.pas.model.GoodsModel">
+		select * from goods where goods_name like '%${value}%'
+	</select>
+	
 	<insert id="insertGoods" parameterType="com.pas.model.GoodsModel">
 		<selectKey keyProperty="g_id" order="AFTER" resultType="int">
 			select last_insert_id()

@@ -43,6 +43,24 @@ public class GoodsService implements GoodsServiceImp {
 		// TODO Auto-generated method stub
 		return dao.deleteGoodsGId(g_id);
 	}
+
+	@Override
+	public List<GoodsModel> getGoodsByName(String goods_name) {
+		// TODO Auto-generated method stub
+		return dao.selectGoodsByGoodsName(goods_name);
+	}
+
+	@Override
+	public List<GoodsModel> getAllGoodsName() {
+		// TODO Auto-generated method stub
+		return dao.getAllGoodsName();
+	}
+
+	@Override
+	public List<GoodsModel> getGoodsNameByType(String goods_type) {
+		// TODO Auto-generated method stub
+		return dao.getGoodsNameByGoodsType(goods_type);
+	}
 	
 	
 	

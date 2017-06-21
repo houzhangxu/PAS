@@ -1,10 +1,13 @@
 <%@ page contentType="text/html;charset=utf-8" import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminPA | Admin Manager</title>
+  <title>AdminPA | Admin User</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -75,24 +78,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%
-                  if(all != null){
-                    Iterator iter = all.iterator();
-                    while(iter.hasNext()){
-                      pageContext.setAttribute("users",iter.next());
-
-                %>
-                <tr>
-                  <td>${users.username}</td>
-                  <td>${users.create_time}</td>
-                </tr>
-                <%  
-                }
-                }
-                %>
+                <jsp:useBean id="myDate" class="java.util.Date"/> 
+           		<c:forEach items="${ list }" var="user">
                 
-
-               
+                <tr>
+                  <td>${user.username}</td>
+                  <c:set target="${myDate}" property="time" value="${ user.create_time }"/>
+                  <td><fmt:formatDate value="${myDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                </tr>
+                
+				</c:forEach>
                 </tbody>
 
                

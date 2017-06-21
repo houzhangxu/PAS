@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=utf-8" import="java.util.*"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -77,26 +78,18 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%
-                  if(all != null){
-                    Iterator iter = all.iterator();
-                    while(iter.hasNext()){
-                      pageContext.setAttribute("admin",iter.next());
-
-                %>
+                <jsp:useBean id="myDate" class="java.util.Date"/> 
+                <c:forEach items="${list }" var="admin">
                 <tr>
                   <td>
-                    <a href="admin_delete.do?id=${admin.a_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-trash-o"></i></a>
-                    <a href="admin_update.do?id=${admin.a_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-edit"></i></a>
+                    <a href="/PAS/admin/manager/dodelete/${admin.a_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-trash-o"></i></a>
+                    <a href="/PAS/admin/manager/update/${admin.a_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-edit"></i></a>
                   </td>
                   <td>${admin.admin_name}</td>
-                  <td>${admin.create_time}</td>
+                  <c:set target="${myDate}" property="time" value="${ admin.create_time }"/>
+                  <td><fmt:formatDate value="${myDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                 </tr>
-                <%  
-                }
-                }
-                %>
-                
+                 </c:forEach>
 
                
                 </tbody>

@@ -1,5 +1,7 @@
 package com.pas.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pas.dao.UserDaoImp;
@@ -54,6 +56,13 @@ public class UserService implements UserServiceImp{
 		
 		return dao.findUserByUId(u_id);
 	}
+
+	@Override
+	public List<UserModel> getAllUser() {
+		// TODO Auto-generated method stub
+		return dao.selectUser();
+	}
+	
 	
 
 	

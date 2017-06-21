@@ -37,7 +37,7 @@ public class HomeController {
 		System.out.println("Fetch Home Login");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
-		mv.setViewName("/admin/index");
+		mv.setViewName("/home/index");
 		return mv;
 	}
 	@RequestMapping("")
@@ -47,7 +47,7 @@ public class HomeController {
 		System.out.println("Fetch Home Login");
 		ModelAndView mv = new ModelAndView();
 		//mv.addObject("list", "123456");
-		mv.setViewName("/admin/index");
+		mv.setViewName("/home/index");
 		return mv;
 	}
 }

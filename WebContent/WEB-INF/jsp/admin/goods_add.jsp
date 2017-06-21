@@ -69,7 +69,7 @@
         <div class="box-body">
           <div class="form-group">
             <label for="exampleInputEmail1">商品名称</label>
-            <input type="text" class="form-control" name="goods_name" id="goods_name"  placeholder="商品名称">
+            <input type="text" class="form-control" name="goods_name" id="goods_name" required  placeholder="商品名称">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">商品详情</label>
@@ -79,7 +79,7 @@
             <label for="exampleInputEmail1">商品价格</label>
             <div class="input-group">
                 <span class="input-group-addon">¥</span>
-                <input type="text" name="price"  id="price" class="form-control">
+                <input type="text" name="price" required id="price" class="form-control">
               </div>
           </div>
           <div class="form-group">

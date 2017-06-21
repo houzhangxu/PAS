@@ -26,6 +26,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from admin where a_id=#{value}
 	</delete>
 	<update id="updateAdminByAId" parameterType="com.pas.model.AdminModel">
-		update admin set a_id=#{a_id},admin_name=#{admin_name},password=#{password},status=#{status},create_time=#{create_time} where a_id=#{value}
+		update admin set a_id=#{a_id},admin_name=#{admin_name},password=#{password},status=#{status},create_time=#{create_time} where a_id=#{a_id}
 	</update>
 </mapper>

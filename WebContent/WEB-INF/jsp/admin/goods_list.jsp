@@ -81,7 +81,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                 <jsp:useBean id="myDate" class="java.util.Date"/> 
+                <jsp:useBean id="myDate" class="java.util.Date"/> 
                 <c:forEach items="${ list }" var="goods">
                 <tr>
                   <td>

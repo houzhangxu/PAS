@@ -65,7 +65,7 @@
     <div class="box box-primary" style="margin-top:10px;">
    
       <!-- form start -->
-      <form role="form" action="/PAS/goods/doadd" method="post" style="padding-top: 10px;">
+      <form role="form" action="/PAS/admin/manager/doadd" method="post" style="padding-top: 10px;">
         <div class="box-body">
           <div class="form-group">
             <label for="exampleInputEmail1">管理员名称</label>

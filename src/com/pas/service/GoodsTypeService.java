@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.pas.dao.GoodsTpyeDaoImp;
+import com.pas.dao.GoodsTypeDaoImp;
 import com.pas.model.GoodsTypeModel;
 
 public class GoodsTypeService implements GoodsTypeServiceImp {
 
 	@Autowired
-	private GoodsTpyeDaoImp dao;
+	private GoodsTypeDaoImp dao;
 	
 	@Override
 	public List<GoodsTypeModel> GetAllGoodsTypeName() {

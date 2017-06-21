@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pas.model.GoodsTypeModel;
 
-public class GoodsTpyeDao implements GoodsTpyeDaoImp {
+public class GoodsTypeDao implements GoodsTypeDaoImp {
 	@Autowired
 	private SqlSession ss;
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,8 +20,8 @@ import com.pas.service.UserService;
 @RequestMapping("/admin")
 public class AdminController {
 	
-	private UserService us = new UserService();
-	private GoodsServiceImp gs = new GoodsService();
+	@Autowired
+	private GoodsServiceImp gs;
 	
 	
 	//首页
@@ -91,6 +92,7 @@ public class AdminController {
 			HttpServletResponse response) throws Exception {
 //		String username = request.getParameter("username");
 		ModelAndView mv = new ModelAndView();
+		//request.setCharacterEncoding("UTF-8");
 		
 		if(this.isEmpty(request.getParameter("goods_name"))){
 			mv.setViewName("/admin/error");

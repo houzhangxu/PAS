@@ -12,22 +12,24 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.pas.dao.UserDao;
 import com.pas.dao.UserDaoImp;
 import com.pas.model.UserModel;
+import com.pas.service.UserService;
+import com.pas.service.UserServiceImp;
 
 public class HouTest {
 	
 	private ApplicationContext app;
-	private UserDaoImp user;
+	private UserServiceImp user;
 	
 	@Before
 	public void beforea(){
 		app = new ClassPathXmlApplicationContext("bean.xml");
-		user = (UserDao)app.getBean("user");
+		user = (UserService)app.getBean("userservice");
 	}
 	
 	@Test
 	public void t(){
 		System.out.println("Hi!");
-		UserModel um = user.findUserByUId(1);
+		UserModel um = user.findUser(1);
 		System.out.println(um.getU_id());
 		System.out.println(um.getUsername());
 		

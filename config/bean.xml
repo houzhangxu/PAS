@@ -22,7 +22,14 @@
         ">
 	
 	<context:annotation-config></context:annotation-config>
-	<mvc:annotation-driven></mvc:annotation-driven>
+		<mvc:annotation-driven >
+		<!-- 消息转换器 -->
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	<context:component-scan base-package="com.pas.controller"></context:component-scan>
 	<context:component-scan base-package="com.pas.dao"></context:component-scan>
 	<context:component-scan base-package="com.pas.service"></context:component-scan>
@@ -47,24 +54,32 @@
 	<bean id="goods" class="com.pas.dao.GoodsDao"></bean>
 	<bean id="admin" class="com.pas.dao.AdminDao"></bean>
 	<bean id="capital" class="com.pas.dao.CapitalDao"></bean>
-	<bean id="goods_type" class="com.pas.dao.GoodsDao"></bean>
+	<bean id="goods_type" class="com.pas.dao.GoodsTypeDao"></bean>
 	<bean id="orders" class="com.pas.dao.OrdersDao"></bean>
 	<bean id="order_detail" class="com.pas.dao.OrderDetailDao"></bean>
 	<bean id="order_goods" class="com.pas.dao.OrderGoodsDao"></bean>
 	<bean id="pay_method" class="com.pas.dao.PayMethodDao"></bean>
+	<bean id="shoppingcart" class="com.pas.dao.ShoppingCartDao"></bean>
 	
-	<bean id="userservice" class="com.pas.service.UserService"></bean>
+	<bean id="user_service" class="com.pas.service.UserService"></bean>
+	<bean id="goods_service" class="com.pas.service.GoodsService"></bean>
+	<bean id="goods_type_service" class="com.pas.service.GoodsTypeService"></bean>
+	<bean id="orders_service" class="com.pas.service.OrdersService"></bean>
+	<bean id="shopping_service" class="com.pas.service.ShoppingCartService"></bean>
 	
 	
 	<!-- 配置静态资源 -->
 	<!-- 后台静态资源 -->
 	<mvc:resources mapping="/static/admin/**" location="/static/admin/"/>
+	
 	<!-- 前台静态资源 -->
 	<mvc:resources mapping="/static/home/**" location="/static/home/"/>
+	
 	<!-- 
 	<mvc:resources mapping="/admin/**/static/admin/**" location="/static/admin/"/>
 	<mvc:resources mapping="/admin/*/static/admin/**" location="/static/admin/"/>
 	 -->
+	
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 前缀 -->

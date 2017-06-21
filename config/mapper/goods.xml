@@ -23,7 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<selectKey keyProperty="g_id" order="AFTER" resultType="int">
 			select last_insert_id()
 		</selectKey>
-		insert into goods values(#{g_id},#{goods_name},#{goods_type},#{price},#{total},#{creator},#{create_time})
+		insert into goods 
+		values(#{g_id},#{goods_name},#{goods_main},#{goods_type},#{price},#{total},#{creator},#{create_time})
 	</insert>
 	<delete id="deleteGoodsGId" parameterType="int">
 		delete from goods where g_id=#{value}

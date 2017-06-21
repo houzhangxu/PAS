@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminPA | ${er}</title>
+  <title>AdminPA | ${success}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -34,18 +34,14 @@
   <div class="content-wrapper" style="margin-left:0px;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      <h1>
-        发生了一个错误:
-      </h1>
-
     </section>
 
     <!-- Main content -->
     <section class="content">
       <div class="error-page">
-        <h2 class=" text-yellow"> ${er}</h2>
-        <span id="time">3</span>秒后跳转,
-        或者点击 <a href="javascript:history.go(-1);">返回</a>.
+        <h2 class=" text-yellow"> ${success}</h2>
+        <span id="time">1</span>秒后跳转,
+        或者点击 <a href="${ target }">跳转</a>.
         <!-- /.error-content -->
       </div>
       <!-- /.error-page -->
@@ -101,7 +97,7 @@
 
       if (time <= 0) {
 
-        window.history.go(-1);
+        window.location = "${target}";
 
       } else {
 

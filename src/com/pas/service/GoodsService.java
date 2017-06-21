@@ -1,5 +1,7 @@
 package com.pas.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pas.dao.GoodsDaoImp;
@@ -20,8 +22,22 @@ public class GoodsService implements GoodsServiceImp {
 	public int addGoods(GoodsModel gm) {
 		// TODO Auto-generated method stub
 		dao.insertGoods(gm);
-		return 0;
+		return gm.getG_id();
 	}
+
+	@Override
+	public List<GoodsModel> getAllGoods() {
+		// TODO Auto-generated method stub
+		return dao.selectGoods();
+	}
+
+	@Override
+	public int updateGoods(GoodsModel gm) {
+		// TODO Auto-generated method stub
+		
+		return dao.updateGoodsGId(gm);
+	}
+	
 	
 	
 

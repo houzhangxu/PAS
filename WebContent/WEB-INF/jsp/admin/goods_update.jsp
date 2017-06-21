@@ -4,32 +4,32 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminPA | Index</title>
+  <title>AdminPA | Update</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="Admin/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/PAS/static/admin/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="Admin/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="/PAS/static/admin/dist/css/AdminLTE.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="Admin/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="/PAS/static/admin/dist/css/skins/_all-skins.min.css">
   <!-- iCheck -->
-  <link rel="stylesheet" href="Admin/plugins/iCheck/flat/blue.css">
+  <link rel="stylesheet" href="/PAS/static/admin/plugins/iCheck/flat/blue.css">
   <!-- Morris chart -->
-  <link rel="stylesheet" href="Admin/plugins/morris/morris.css">
+  <link rel="stylesheet" href="/PAS/static/admin/plugins/morris/morris.css">
   <!-- jvectormap -->
-  <link rel="stylesheet" href="Admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <link rel="stylesheet" href="/PAS/static/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
   <!-- Date Picker -->
-  <link rel="stylesheet" href="Admin/plugins/datepicker/datepicker3.css">
+  <link rel="stylesheet" href="/PAS/static/admin/plugins/datepicker/datepicker3.css">
   <!-- Daterange picker -->
-  <link rel="stylesheet" href="Admin/plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="/PAS/static/admin/plugins/daterangepicker/daterangepicker.css">
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="/PAS/static/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -54,8 +54,8 @@
         <small>修改商品</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="index.jsp"><i class="fa fa-dashboard"></i> 主页</a></li>
-        <li><a href="goods_list.jsp">商品管理</a></li>
+        <li><a href="/PAS/admin"><i class="fa fa-dashboard"></i> 主页</a></li>
+        <li><a href="/PAS/admin/goods">商品管理</a></li>
         <li class="active">修改商品</li>
       </ol>
     </section>
@@ -64,7 +64,7 @@
     <div class="box box-primary" style="margin-top:10px;">
    
       <!-- form start -->
-      <form role="form" action="DoGoods_update.do" method="post" style="padding-top: 10px;">
+      <form role="form" action="/PAS/admin/goods/doupdate" method="post" style="padding-top: 10px;">
         <div class="box-body">
           <div class="form-group">
             <label for="exampleInputEmail1">商品名称</label>
@@ -110,7 +110,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery 2.2.3 -->
-<script src="Admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="/PAS/static/admin/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
@@ -118,34 +118,34 @@
   $.widget.bridge('uibutton', $.ui.button);
 </script>
 <!-- Bootstrap 3.3.6 -->
-<script src="Admin/bootstrap/js/bootstrap.min.js"></script>
+<script src="/PAS/static/admin/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="Admin/plugins/morris/morris.min.js"></script>
+<script src="/PAS/static/admin/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
-<script src="Admin/plugins/sparkline/jquery.sparkline.min.js"></script>
+<script src="/PAS/static/admin/plugins/sparkline/jquery.sparkline.min.js"></script>
 <!-- jvectormap -->
-<script src="Admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="Admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<script src="/PAS/static/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="/PAS/static/admin/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <!-- jQuery Knob Chart -->
-<script src="Admin/plugins/knob/jquery.knob.js"></script>
+<script src="/PAS/static/admin/plugins/knob/jquery.knob.js"></script>
 <!-- daterangepicker -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
-<script src="Admin/plugins/daterangepicker/daterangepicker.js"></script>
+<script src="/PAS/static/admin/plugins/daterangepicker/daterangepicker.js"></script>
 <!-- datepicker -->
-<script src="Admin/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="/PAS/static/admin/plugins/datepicker/bootstrap-datepicker.js"></script>
 <!-- Bootstrap WYSIHTML5 -->
-<script src="Admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="/PAS/static/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
-<script src="Admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<script src="/PAS/static/admin/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
-<script src="Admin/plugins/fastclick/fastclick.js"></script>
+<script src="/PAS/static/admin/plugins/fastclick/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="Admin/dist/js/app.min.js"></script>
+<script src="/PAS/static/admin/dist/js/app.min.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="Admin/dist/js/pages/dashboard.js"></script>
+<script src="/PAS/static/admin/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="Admin/dist/js/demo.js"></script>
+<script src="/PAS/static/admin/dist/js/demo.js"></script>
 
 
 </body>

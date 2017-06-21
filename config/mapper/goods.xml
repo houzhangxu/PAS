@@ -30,6 +30,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from goods where g_id=#{value}
 	</delete>
 	<update id="updateGoodsGId" parameterType="com.pas.model.GoodsModel">
-		update goods set g_id=#{g_id},goods_name=#{goods_name},goods_type=#{goods_type},price=#{price},total=#{total},creator=#{creator},create_time=#{create_time} where g_id=#{value}
+		update goods set goods_name=#{goods_name},goods_main=#{goods_main},price=#{price},total=#{total},creator=#{creator},create_time=#{create_time} where g_id=#{g_id}
 	</update>
 </mapper>

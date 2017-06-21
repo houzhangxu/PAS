@@ -1,4 +1,7 @@
 <%@ page contentType="text/html;charset=utf-8" import="java.util.*"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -78,29 +81,21 @@
                 </tr>
                 </thead>
                 <tbody>
-                <%
-                  if(all != null){
-                    Iterator iter = all.iterator();
-                    while(iter.hasNext()){
-                      pageContext.setAttribute("goods",iter.next());
-
-                %>
+                 <jsp:useBean id="myDate" class="java.util.Date"/> 
+                <c:forEach items="${ list }" var="goods">
                 <tr>
                   <td>
-                    <a href="goods_delete.do?id=${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-trash-o"></i></a>
-                    <a href="goods_update.do?id=${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-edit"></i></a>
+                    <a href="/PAS/admin/good/dodelete/${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-trash-o"></i></a>
+                    <a href="/PAS/admin/goods/update/${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-edit"></i></a>
                   </td>
                   <td>${goods.goods_name}</td>
                   <td>${goods.price}¥</td>
                   <td>${goods.total}</td>
-                  <td>${goods.create_time}</td>
+                  <c:set target="${myDate}" property="time" value="${ goods.create_time }"/>
+                  <td><fmt:formatDate value="${myDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                 </tr>
-                <%  
-                }
-                }
-                %>
                 
-
+				</c:forEach>
                
                 </tbody>
 

@@ -37,6 +37,12 @@ public class GoodsService implements GoodsServiceImp {
 		
 		return dao.updateGoodsGId(gm);
 	}
+
+	@Override
+	public int deleteGoods(int g_id) {
+		// TODO Auto-generated method stub
+		return dao.deleteGoodsGId(g_id);
+	}
 	
 	
 	

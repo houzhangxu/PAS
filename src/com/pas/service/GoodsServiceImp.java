@@ -10,4 +10,6 @@ public interface GoodsServiceImp {
    public int addGoods(GoodsModel gm);
    public List<GoodsModel> getAllGoods();
    public int updateGoods(GoodsModel gm);
+   public int deleteGoods(int g_id);
+   
 }

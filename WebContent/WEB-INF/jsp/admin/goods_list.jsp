@@ -85,7 +85,7 @@
                 <c:forEach items="${ list }" var="goods">
                 <tr>
                   <td>
-                    <a href="/PAS/admin/good/dodelete/${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-trash-o"></i></a>
+                    <a href="/PAS/admin/goods/dodelete/${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-trash-o"></i></a>
                     <a href="/PAS/admin/goods/update/${goods.g_id}" class="btn btn-default btn-sm" style="padding:0px 5px 0px 5px; "><i class="fa fa-edit"></i></a>
                   </td>
                   <td>${goods.goods_name}</td>

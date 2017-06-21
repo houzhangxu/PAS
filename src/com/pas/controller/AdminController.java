@@ -299,7 +299,37 @@ public class AdminController {
 		return mv;
 	}
 	
-	
+	//删除商品
+	@RequestMapping("/goods/dodelete/{id}")
+	public ModelAndView goodsDodelete(@PathVariable("id") int id,HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+//		String username = request.getParameter("username");
+		System.out.println("Fetch delete");
+		ModelAndView mv = new ModelAndView();
+		
+		int g_id = id;
+		
+		if(g_id < 1){
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "商品不存在");
+			return mv;
+		}
+		
+		try{
+			gs.deleteGoods(g_id);
+		}catch (Exception e) {
+			
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "商品删除失败");
+			return mv;
+		}
+		
+		mv.addObject("target", "/PAS/admin/goods");
+		mv.addObject("success", "商品删除成功");
+		mv.setViewName("/admin/success");
+		
+		return mv;
+	}
 	
 	//管理员列表
 	@RequestMapping("/manager")

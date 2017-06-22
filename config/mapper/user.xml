@@ -16,6 +16,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getPasswordByUId" parameterType="int" resultType="java.lang.String">
 		select password from user where u_id=#{value}
 	</select>
+	<select id="getCount" resultType="int">
+		select count(*) from user
+	</select>
 	<insert id="insertUser" parameterType="com.pas.model.UserModel">
 	    <selectKey keyProperty="u_id" order="AFTER" resultType="int">
           	 select last_insert_id()

@@ -11,4 +11,5 @@ public interface OrdersDaoImp {
 	public void insertOrders(OrdersModel om);
 	public int deleteOrdersByOId(int o_id);
 	public int updateOrdersByOId(OrdersModel om);
+	public int getCount();
 }

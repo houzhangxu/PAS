@@ -14,4 +14,5 @@ public interface GoodsDaoImp {
 	public List<GoodsModel> getGoodsNameByGoodsType(String goods_type);
 	public List<GoodsModel> getAllGoodsName();
 	public List<GoodsModel> selectGoodsByGoodsName(String goods_name);
+	public int getCount();
 }

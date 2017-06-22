@@ -39,19 +39,33 @@
       <url-pattern>/*</url-pattern>    
   </filter-mapping>
 
-<!-- 登录验证过滤器 -->
-<!-- <filter>
+<!-- 前台登录过滤器 -->
+<filter>
+    <filter-name>HomeLoginFilter</filter-name>
+    <filter-class>com.pas.filter.HomeLoginFilter</filter-class>
+    <init-param>
+          <param-name>unpagelock</param-name>
+          <param-value>/,/search,/login,/register,/register/,/dologin,/doregister</param-value>
+      </init-param>
+</filter>
+<filter-mapping>
+    <filter-name>HomeLoginFilter</filter-name>  
+    <url-pattern>/*</url-pattern>    
+</filter-mapping>
+
+<!-- 后台登录过滤器 -->
+<filter>
     <filter-name>AdminLoginFilter</filter-name>
     <filter-class>com.pas.filter.AdminLoginFilter</filter-class>
     <init-param>
           <param-name>unpagelock</param-name>
-          <param-value>/Admin/login.html,/DoLoginAjax.do</param-value>
+          <param-value>/admin/login,/admin/dologin</param-value>
       </init-param>
 </filter>
 <filter-mapping>
     <filter-name>AdminLoginFilter</filter-name>  
     <url-pattern>/*</url-pattern>    
-</filter-mapping> -->
+</filter-mapping>
       
   <servlet>
   	<servlet-name>shop</servlet-name>

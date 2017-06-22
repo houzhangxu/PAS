@@ -10,16 +10,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectShoppingCart" resultType="com.pas.model.ShoppingCartModel">
 		select * from shopping_cart order by create_time desc
 	</select>
+	<select id="selectShoppingCartByUId" parameterType="int" resultType="com.pas.model.ShoppingCartModel">
+		select * from shopping_cart where u_id = #{value} order by create_time desc
+	</select>
+	<select id="getSCID" parameterType="com.pas.model.ShoppingCartModel" resultType="int">
+		select s_c_id from shopping_cart where u_id = #{u_id} and g_id = #{g_id}
+	</select>
+	<select id="getTotalBySCId" parameterType="int" resultType="int">
+		select total from shopping_cart where s_c_id = #{value}
+	</select>
+	
 	<insert id="insertShoppingCart" parameterType="com.pas.model.ShoppingCartModel">
 		<selectKey keyProperty="s_c_id" order="AFTER" resultType="int">
 			select last_insert_id()
 		</selectKey>
-		insert into shopping_cart values(#{s_c_id},#{g_id},#{u_id},#{total},#{create_name})
+		insert into shopping_cart values(#{s_c_id},#{g_id},#{u_id},#{total},#{create_time})
 	</insert>
 	<delete id="deleteShoppingCartBySCId" parameterType="int">
 		delete from shopping_cart where s_c_id=#{value}
 	</delete>
 	<update id="updateShoppingCartBySCId" parameterType="com.pas.model.ShoppingCartModel">
 		update shopping_cart set s_c_id=#{s_c_id},g_id=#{g_id},u_id=#{u_id},total=#{total},create_name=#{create_name} where s_c_id=#{value}
+	</update>
+	<update id="addTotalBySCId" parameterType="int">
+		update shopping_cart set total = total + 1 where s_c_id=#{value}
+	</update>
+	<update id="subTotalBySCId" parameterType="int">
+		update shopping_cart set total = total - 1 where s_c_id=#{value}
 	</update>
 </mapper>

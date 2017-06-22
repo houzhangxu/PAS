@@ -10,4 +10,5 @@ public interface UserServiceImp {
 	public boolean checkName(String username);
 	public UserModel findUser(int u_id);
 	public List<UserModel> getAllUser();
+	public int getCount();
 }

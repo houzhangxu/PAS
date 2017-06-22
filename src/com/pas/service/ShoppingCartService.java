@@ -1,5 +1,7 @@
 package com.pas.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pas.dao.ShoppingCartDaoImp;
@@ -15,7 +17,7 @@ public class ShoppingCartService implements ShoppingCartServiceImp {
 		
 		dao.insertShoppingCart(sc);
 		
-		if(sc.getU_id()!=0)return true;
+		if(sc.getS_c_id() > 0)return true;
 		
 		return false;
 	}
@@ -26,11 +28,35 @@ public class ShoppingCartService implements ShoppingCartServiceImp {
 		try{
 			dao.deleteShoppingCartBySCId(s_c_id);
 		}catch(Exception e){
-			return true;
+			return false;
 		}
 		
 		
-		return false;
+		return true;
+	}
+
+	@Override
+	public List<ShoppingCartModel> selectCartInfoByUId(int u_id) {
+		// TODO Auto-generated method stub
+		return dao.selectShoppingCartByUId(u_id);
+	}
+
+	@Override
+	public int getSCID(ShoppingCartModel scm) {
+		// TODO Auto-generated method stub
+		return dao.getSCID(scm);
+	}
+
+	@Override
+	public int addTotal(int s_c_id) {
+		// TODO Auto-generated method stub
+		return dao.addTotalBySCId(s_c_id);
+	}
+
+	@Override
+	public int subTotal(int s_c_id) {
+		// TODO Auto-generated method stub
+		return dao.subTotalBySCId(s_c_id);
 	}
 
 }

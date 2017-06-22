@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,9 @@ import com.pas.model.UserModel;
 import com.pas.service.AdminServiceImp;
 import com.pas.service.GoodsService;
 import com.pas.service.GoodsServiceImp;
+import com.pas.service.OrdersServiceImp;
 import com.pas.service.UserService;
+import com.pas.service.UserServiceImp;
 
 @Controller
 @RequestMapping("/admin")
@@ -31,8 +34,9 @@ public class AdminController {
 	@Autowired
 	private AdminServiceImp admin;
 	@Autowired
-	private UserService userService;
-	
+	private UserServiceImp userService;
+	@Autowired
+	private OrdersServiceImp ordersService;
 	
 	// 首页
 	@RequestMapping("")
@@ -40,7 +44,18 @@ public class AdminController {
 		// String username = request.getParameter("username");
 		System.out.println("Fetch Login");
 		ModelAndView mv = new ModelAndView();
-		// mv.addObject("list", "123456");
+		
+		int order = ordersService.getCount();
+		int user = userService.getCount();
+		int goods = gs.getCount();
+		int admin_n = admin.getCount();
+		
+		mv.addObject("order", order);
+		mv.addObject("user", user);
+		mv.addObject("goods",goods );
+		mv.addObject("admin", admin_n);
+		
+		System.out.println(order);
 		mv.setViewName("/admin/index");
 		return mv;
 	}
@@ -56,16 +71,77 @@ public class AdminController {
 		return mv;
 	}
 
+	// 登录操作
+	@RequestMapping("/dologin")
+	public ModelAndView dologin(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("Fetch Home Dologin");
+		ModelAndView mv = new ModelAndView();
+
+		if (this.isEmpty(request.getParameter("username"))) {
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "用户名未输入");
+			return mv;
+		}
+		if (this.isEmpty(request.getParameter("password"))) {
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "密码未输入");
+			return mv;
+		}
+
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+
+		int a_id = admin.doLogin(username, password);
+
+		if (a_id == 0) {
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "密码错误");
+			return mv;
+		}
+		if (a_id == -1) {
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "用户名不存在");
+			return mv;
+		}
+
+		AdminModel am = admin.findAdmin(a_id);
+
+		HttpSession session = request.getSession();
+		session.setAttribute("admin_name", am.getAdmin_name());
+		session.setAttribute("aid", am.getA_id());
+
+		mv.addObject("success", "登录成功");
+		mv.addObject("target", "/PAS/admin");
+		mv.setViewName("/admin/success");
+		return mv;
+	}
+	
+	// 退出登录
+	@RequestMapping("/sigout")
+	public ModelAndView sigout(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// String username = request.getParameter("username");
+		System.out.println("Fetch Sigout");
+		ModelAndView mv = new ModelAndView();
+		// mv.addObject("list", "123456");
+		
+		HttpSession session = request.getSession();
+		session.setAttribute("aid", Integer.valueOf(0));
+		session.setAttribute("admin_name", null);
+		
+		mv.setViewName("/admin/login");
+		return mv;
+	}
+	
 	// 用户列表
 	@RequestMapping("/user")
 	public ModelAndView user(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// String username = request.getParameter("username");
 		System.out.println("Fetch User");
 		ModelAndView mv = new ModelAndView();
-		
+
 		List<UserModel> list = userService.getAllUser();
-		
-		 mv.addObject("list", list);
+
+		mv.addObject("list", list);
 		mv.setViewName("/admin/user_list");
 		return mv;
 	}
@@ -77,7 +153,7 @@ public class AdminController {
 		System.out.println("Fetch Goods");
 		ModelAndView mv = new ModelAndView();
 
-		List<GoodsModel> list = gs.getAllGoodsName();
+		List<GoodsModel> list = gs.getAllGoods();
 
 		mv.addObject("list", list);
 		mv.setViewName("/admin/goods_list");
@@ -488,37 +564,37 @@ public class AdminController {
 	}
 
 	// 删除商品
-		@RequestMapping("/manager/dodelete/{id}")
-		public ModelAndView managerDodelete(@PathVariable("id") int id, HttpServletRequest request,
-				HttpServletResponse response) throws Exception {
-			// String username = request.getParameter("username");
-			System.out.println("Fetch delete");
-			ModelAndView mv = new ModelAndView();
+	@RequestMapping("/manager/dodelete/{id}")
+	public ModelAndView managerDodelete(@PathVariable("id") int id, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// String username = request.getParameter("username");
+		System.out.println("Fetch delete");
+		ModelAndView mv = new ModelAndView();
 
-			int a_id = id;
+		int a_id = id;
 
-			if (a_id < 1) {
-				mv.setViewName("/admin/error");
-				mv.addObject("er", "管理员不存在");
-				return mv;
-			}
-
-			try {
-				admin.deleteAdmin(a_id);
-			} catch (Exception e) {
-
-				mv.setViewName("/admin/error");
-				mv.addObject("er", "管理员删除失败");
-				return mv;
-			}
-
-			mv.addObject("target", "/PAS/admin/manager");
-			mv.addObject("success", "管理员删除成功");
-			mv.setViewName("/admin/success");
-
+		if (a_id < 1) {
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "管理员不存在");
 			return mv;
 		}
-	
+
+		try {
+			admin.deleteAdmin(a_id);
+		} catch (Exception e) {
+
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "管理员删除失败");
+			return mv;
+		}
+
+		mv.addObject("target", "/PAS/admin/manager");
+		mv.addObject("success", "管理员删除成功");
+		mv.setViewName("/admin/success");
+
+		return mv;
+	}
+
 	// 所有订单
 	@RequestMapping("/orders")
 	public ModelAndView adminOrders(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -530,16 +606,6 @@ public class AdminController {
 		return mv;
 	}
 
-	// 退出登录
-	@RequestMapping("/sigout")
-	public ModelAndView sigout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// String username = request.getParameter("username");
-		System.out.println("Fetch Sigout");
-		ModelAndView mv = new ModelAndView();
-		// mv.addObject("list", "123456");
-		mv.setViewName("/admin/index");
-		return mv;
-	}
 
 	private boolean isEmpty(String name) {
 		if (name == null || name.trim().isEmpty()) {

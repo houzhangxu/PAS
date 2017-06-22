@@ -43,12 +43,11 @@ public class UserService implements UserServiceImp{
 
 	@Override
 	public boolean checkName(String username) {
-		
 		if(dao.getUIdByUsername(username)>0){
-			return true;
+			return false;
 		}
 		
-		return false;
+		return true;
 	}
 
 	@Override
@@ -62,6 +61,12 @@ public class UserService implements UserServiceImp{
 	public List<UserModel> getAllUser() {
 		// TODO Auto-generated method stub
 		return dao.selectUser();
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return dao.getCount();
 	}
 	
 	

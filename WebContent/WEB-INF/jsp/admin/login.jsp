@@ -42,9 +42,9 @@
   <div class="login-box-body">
     <p class="login-box-msg"></p>
 
-    <form action="../DoLoginAjax.do" method="post">
+    <form action="/PAS/admin/dologin" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" id="admin_name" name="admin_name" placeholder="AdminName">
+        <input type="text" class="form-control" id="admin_name" name="username" placeholder="AdminName">
         <span class="glyphicon glyphicon-edit form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -95,51 +95,6 @@
 
 </script>
 <script type="text/javascript">
-
-$(function(){
-  $("form").submit(function(e){
-    e.preventDefault();
-    dataAjax();
-  });
-  $("#admin_name").focus(function(){
-    admin_name = $("#admin_name");
-  });
-  $("#password").focus(function(){
-    password = $("#password");
-  });
-  $("#login_tip .close").click(function(){
-    $("#login_tip").css("display","none");
-  });
-});
-function dataAjax(){
-  var admin_name = $("#admin_name").val();
-  var password = $("#password").val();
-  var remberMe;
-  if($("#rember_me .icheckbox_square-blue").attr("aria-checked") == "true"){
-    remberme = 1;
-  }else{
-    remberme = 0;
-  }
-  $.post("../DoLoginAjax.do",{'admin_name':admin_name,'password':password,'remberme':remberme},function(data){
-    //xianshi(data);
-    //var a = JSON.stringify(data);
-    xianshi(data);
-  });
-}
-function xianshi(data){
-  if(data == "1"){
-    window.location.href="index.jsp";
-  }else if(data == "0"){
-    $("#login_tip p").text("密码错误");
-    $("#login_tip").css("display","block");
-  }else if(data == "-1"){
-    $("#login_tip p").text("用户不存在");
-    $("#login_tip").css("display","block");
-  }else{
-    $("#login_tip p").text("未知错误");
-    $("#login_tip").css("display","block");
-  }
-}
 
 </script>
 </body>

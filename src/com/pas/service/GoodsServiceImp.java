@@ -14,4 +14,5 @@ public interface GoodsServiceImp {
    public List<GoodsModel> getGoodsByName(String goods_name);
    public List<GoodsModel> getAllGoodsName();
    public List<GoodsModel> getGoodsNameByType(String goods_type);
+   public int getCount();
 }

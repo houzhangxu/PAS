@@ -9,7 +9,7 @@
 					if(session.getAttribute("username") != null && session.getAttribute("username") != ""){
 				%>
 					欢迎您:${sessionScope.username}
-					<a href="/sigout">退出</a>
+					<a href="/PAS/sigout">退出</a>
 
 				<%
 					}else{

@@ -12,4 +12,5 @@ public interface AdminDaoImp {
 	public void insertAdmin(AdminModel am);
 	public int deleteAdminByAId(int a_id);
 	public int updateAdminByAId(AdminModel am);
+	public int getCount();
 }

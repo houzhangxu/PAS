@@ -47,4 +47,10 @@ public class OrdersDao implements OrdersDaoImp {
 		return ss.update("orders.updateOrdersByOId", om);
 	}
 
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return ss.selectOne("orders.getCount");
+	}
+
 }

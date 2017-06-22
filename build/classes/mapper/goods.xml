@@ -22,7 +22,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectGoodsByGoodsName" parameterType="java.lang.String" resultType="com.pas.model.GoodsModel">
 		select * from goods where goods_name like '%${value}%'
 	</select>
-	
+	<select id="getCount" resultType="int">
+		select count(*) from goods
+	</select>
 	<insert id="insertGoods" parameterType="com.pas.model.GoodsModel">
 		<selectKey keyProperty="g_id" order="AFTER" resultType="int">
 			select last_insert_id()

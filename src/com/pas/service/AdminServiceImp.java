@@ -10,4 +10,7 @@ public interface AdminServiceImp {
 	public int updateAdmin(AdminModel am);
 	public int deleteAdmin(int a_id);
 	public AdminModel findAdmin(int a_id);
+	public int doLogin(String username,String password);
+	public boolean checkName(String username);
+	public int getCount();
 }

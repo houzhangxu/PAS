@@ -12,4 +12,5 @@ public interface UserDaoImp {
 	public void insertUser(UserModel um);
 	public int deleteUserByUId(int u_id);
 	public int updateUserByUId(UserModel um);
+	public int getCount();
 }

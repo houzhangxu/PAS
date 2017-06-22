@@ -1,13 +1,12 @@
 package com.pas.model;
 
-import java.util.*;
-
-public class ShoppingCartModel {
+public class ShoppingCartMoreModel {
 	private int s_c_id;
 	private int g_id;
-	private int u_id;
+	private String goods_name;
+	private double price;
 	private double total;
-	private double create_time;
+	
 	public int getS_c_id() {
 		return s_c_id;
 	}
@@ -20,17 +19,17 @@ public class ShoppingCartModel {
 	public void setG_id(int g_id) {
 		this.g_id = g_id;
 	}
-	public int getU_id() {
-		return u_id;
+	public String getGoods_name() {
+		return goods_name;
 	}
-	public void setU_id(int u_id) {
-		this.u_id = u_id;
+	public void setGoods_name(String goods_name) {
+		this.goods_name = goods_name;
 	}
-	public double getCreate_time() {
-		return create_time;
+	public double getPrice() {
+		return price;
 	}
-	public void setCreate_time(double create_time) {
-		this.create_time = create_time;
+	public void setPrice(double price) {
+		this.price = price;
 	}
 	public double getTotal() {
 		return total;

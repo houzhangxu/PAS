@@ -27,7 +27,12 @@ public class AdminDao implements AdminDaoImp {
 	@Override
 	public int getAIdByAdminname(String admin_name) {
 		// TODO Auto-generated method stub
-		return ss.selectOne("admin.getAIdByAdminname", admin_name);
+		Integer i =  ss.selectOne("admin.getAIdByAdminname", admin_name);
+		if(i == null){
+			return 0;
+		}
+		
+		return i.intValue();
 	}
 
 	@Override
@@ -52,6 +57,12 @@ public class AdminDao implements AdminDaoImp {
 	public int updateAdminByAId(AdminModel am) {
 		// TODO Auto-generated method stub
 		return ss.update("admin.updateAdminByAId", am);
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return ss.selectOne("admin.getCount");
 	}
 
 }

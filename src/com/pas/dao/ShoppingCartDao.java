@@ -42,4 +42,32 @@ public class ShoppingCartDao implements ShoppingCartDaoImp {
 		return ss.update("shopping_cart.updateShoppingCartBySCId", scm);
 	}
 
+	@Override
+	public List<ShoppingCartModel> selectShoppingCartByUId(int u_id) {
+		// TODO Auto-generated method stub
+		return ss.selectList("shopping_cart.selectShoppingCartByUId",u_id);
+	}
+
+	@Override
+	public int getSCID(ShoppingCartModel scm) {
+		// TODO Auto-generated method stub
+		Integer i =  ss.selectOne("shopping_cart.getSCID",scm);
+		if(i == null){
+			return 0;
+		}
+		return i.intValue();
+	}
+
+	@Override
+	public int addTotalBySCId(int s_c_id) {
+		// TODO Auto-generated method stub
+		return ss.update("shopping_cart.addTotalBySCId", s_c_id);
+	}
+
+	@Override
+	public int subTotalBySCId(int s_c_id) {
+		// TODO Auto-generated method stub
+		return ss.update("shopping_cart.subTotalBySCId", s_c_id);
+	}
+
 }

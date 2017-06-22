@@ -67,4 +67,10 @@ public class GoodsDao implements GoodsDaoImp {
 		return ss.selectList("goods.selectGoodsByGoodsName",goods_name);
 	}
 
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return ss.selectOne("goods.getCount");
+	}
+
 }

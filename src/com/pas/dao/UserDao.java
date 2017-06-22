@@ -42,12 +42,22 @@ public class UserDao implements UserDaoImp{
 	@Override
 	public int getUIdByUsername(String username) {
 		// TODO Auto-generated method stub
-		return ss.selectOne("user.getUIdByUsername",username);
+		Integer i =  ss.selectOne("user.getUIdByUsername",username);
+		if(i == null){
+			return 0;
+		}
+		return i.intValue();
 	}
 
 	@Override
 	public String getPasswordByUId(int u_id) {
 		// TODO Auto-generated method stub
 		return ss.selectOne("user.getPasswordByUId",u_id);
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return ss.selectOne("user.getCount");
 	}
 }

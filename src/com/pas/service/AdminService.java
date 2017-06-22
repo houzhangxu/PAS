@@ -42,5 +42,38 @@ public class AdminService implements AdminServiceImp{
 		// TODO Auto-generated method stub
 		return dao.findAdminByAId(a_id);
 	}
+
+	@Override
+	public int doLogin(String username, String password) {
+		// TODO Auto-generated method stub
+		
+		int aid = dao.getAIdByAdminname(username);
+		
+		if(aid==0){
+			return -1;  //用户不存在
+		}
+		
+		if(password.equals(dao.getPasswordByAId(aid))){
+			return aid;  //用户存在
+		}
+		
+		return 0;  //密码错误
+	}
+
+	@Override
+	public boolean checkName(String username) {
+		// TODO Auto-generated method stub
+		if(dao.getAIdByAdminname(username) > 0){
+			return false;
+		}
+		
+		return true;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return dao.getCount();
+	}
 	
 }

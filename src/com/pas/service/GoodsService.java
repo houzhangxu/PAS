@@ -61,6 +61,12 @@ public class GoodsService implements GoodsServiceImp {
 		// TODO Auto-generated method stub
 		return dao.getGoodsNameByGoodsType(goods_type);
 	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return dao.getCount();
+	}
 	
 	
 	

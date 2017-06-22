@@ -29,7 +29,7 @@
 			<div class="nav white">
 				<div class="search-bar pr" style="padding:20px 0px 20px 0px;">
 						<a name="index_none_header_sysc" href="#"></a>
-						<form action="search_list.ho" method="get" style="margin:0 auto;">
+						<form action="/PAS/search" method="get" style="margin:0 auto;">
 							<input style="padding-left: 20px;font-size: 14px;" id="key" name="key" type="text" placeholder="商品名称" autocomplete="off">
 							<input id="ai-topsearch" class="submit am-btn" value="搜索" index="1" type="submit">
 						</form>
@@ -113,19 +113,19 @@
 										<div class="amount-wrapper ">
 											<div class="item-amount ">
 												<div class="sl">
-													1
+													${shop.total}
 												</div>
 											</div>
 										</div>
 									</li>
 									<li class="td td-sum">
 										<div class="td-inner">
-											<em tabindex="0" class="J_ItemSum number">${shop.price}</em>
+											<em tabindex="0" class="J_ItemSum number">${shop.price * shop.total}</em>
 										</div>
 									</li>
 									<li class="td td-op">
 										<div class="td-inner">
-											<a href="shop_delete.ho?id=${shop.s_c_id}" data-point-url="#" class="delete">删除</a>
+											<a href="/PAS/cart/delete/${shop.s_c_id}" data-point-url="#" class="delete">删除</a>
 										</div>
 									</li>
 								</ul>

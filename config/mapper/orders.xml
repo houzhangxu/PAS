@@ -13,6 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOrders" resultType="com.pas.model.OrdersModel">
 		select * from orders order by create_time desc
 	</select>
+	<select id="getCount" resultType="int">
+		select count(*) from orders
+	</select>
 	<insert id="insertOrders" parameterType="com.pas.model.OrdersModel">
 		<selectKey keyProperty="o_id" order="AFTER" resultType="int">
           	 select last_insert_id()

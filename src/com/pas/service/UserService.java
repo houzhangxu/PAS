@@ -16,15 +16,16 @@ public class UserService implements UserServiceImp{
 	public int doLogin(String username, String password) {
 		
 		int uid = dao.getUIdByUsername(username);
+		
 		if(uid==0){
-			return -1;
-		}else{
-			if(password.equals(dao.getPasswordByUId(uid))){
-				return 1;
-			}
+			return -1;  //用户不存在
 		}
 		
-		return 0;
+		if(password.equals(dao.getPasswordByUId(uid))){
+			return uid;  //用户存在
+		}
+		
+		return 0;  //密码错误
 	}
 
 	@Override

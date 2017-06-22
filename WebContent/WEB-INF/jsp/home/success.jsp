@@ -2,12 +2,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>发生了一个错误</title>
+	<title>成功</title>
 </head>
 <body>
 
-${error},<span id="time">3</span>秒后返回上一层
- 或者点击 <a href="javascript:history.go(-1);">返回</a>.
+${success},<span id="time">1</span>秒后跳转
+ 或者点击 <a href="${target}">跳转</a>.
 <script type="text/javascript" src="/PAS/static/home/basic/js/jquery-1.7.min.js"></script>
 <script type="text/javascript">
   $(function () {
@@ -28,7 +28,7 @@ ${error},<span id="time">3</span>秒后返回上一层
 
       if (time <= 0) {
 
-        window.history.go(-1);
+        window.location = "${target}";
 
       } else {
 

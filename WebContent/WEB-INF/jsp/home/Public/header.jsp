@@ -6,7 +6,7 @@
 				<div class="menu-hd">
 				<%
 					
-					if(session.getAttribute("username") != null){
+					if(session.getAttribute("username") != null && session.getAttribute("username") != ""){
 				%>
 					欢迎您:${sessionScope.username}
 					<a href="/sigout">退出</a>

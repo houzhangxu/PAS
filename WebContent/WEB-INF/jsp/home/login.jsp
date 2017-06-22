@@ -30,7 +30,7 @@
 							<div class="clear"></div>
 						
 						<div class="login-form" style="background:none;">
-						  <form action="DoLogin.ho">
+						  <form action="/PAS/dologin" method="post">
 							   <div class="user-name">
 								    <label for="user"><i class="am-icon-user"></i></label>
 								    <input type="text" name="username" id="username" placeholder="用户名">

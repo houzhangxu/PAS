@@ -36,18 +36,18 @@ public class UserDao implements UserDaoImp{
 
 	@Override
 	public int updateUserByUId(UserModel um) {
-		return ss.update("updateUserByUId", um);
+		return ss.update("user.updateUserByUId", um);
 	}
 
 	@Override
 	public int getUIdByUsername(String username) {
 		// TODO Auto-generated method stub
-		return 0;
+		return ss.selectOne("user.getUIdByUsername",username);
 	}
 
 	@Override
 	public String getPasswordByUId(int u_id) {
 		// TODO Auto-generated method stub
-		return null;
+		return ss.selectOne("user.getPasswordByUId",u_id);
 	}
 }

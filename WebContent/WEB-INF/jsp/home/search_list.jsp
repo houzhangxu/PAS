@@ -64,7 +64,7 @@
 									<li>
 										<div class="i-pic limit">
 											<p class="title" style="height: 200px;background-color: #f5f5f5;padding: 0 10px;margin-top: 0px;position: relative;">
-												<a href="shop_add.ho?g_id=${goods.g_id}" style="position: absolute;bottom: 10px;right: 10px;">添加</a>
+												<a href="/PAS/cart/add/${goods.g_id}" style="position: absolute;bottom: 10px;right: 10px;">添加</a>
 											</p>
 											<p class="title fl">${goods.goods_name}</p>
 											<p class="price fl">

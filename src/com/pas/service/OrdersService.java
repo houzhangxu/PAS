@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pas.dao.OrdersDaoImp;
+import com.pas.model.OrdersModel;
 import com.pas.model.ShoppingCartModel;
 
 public class OrdersService implements OrdersServiceImp {
@@ -13,21 +14,26 @@ public class OrdersService implements OrdersServiceImp {
 	private OrdersDaoImp dao;
 	
 	@Override
-	public boolean createOrder(int u_id, List<ShoppingCartModel> sc) {
-		
+	public boolean createOrder(OrdersModel om) {
+		dao.insertOrders(om);
+		if(om.getO_id() > 0){
+			return true;
+		}
 		return false;
 	}
 
-	@Override
-	public boolean addGoods(ShoppingCartModel sc) {
-		// TODO Auto-generated method stub
-		return false;
-	}
 
 	@Override
 	public int getCount() {
 		// TODO Auto-generated method stub
 		return dao.getCount();
+	}
+
+
+	@Override
+	public List<OrdersModel> getAllOrders() {
+		// TODO Auto-generated method stub
+		return dao.selectOrders();
 	}
 
 }

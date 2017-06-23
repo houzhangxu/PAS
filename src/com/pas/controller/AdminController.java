@@ -1,6 +1,7 @@
 package com.pas.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.COMM_FAILURE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pas.model.AdminModel;
 import com.pas.model.GoodsModel;
+import com.pas.model.OrderMoreModel;
+import com.pas.model.OrdersModel;
 import com.pas.model.UserModel;
 import com.pas.service.AdminServiceImp;
 import com.pas.service.GoodsService;
@@ -602,10 +606,52 @@ public class AdminController {
 		System.out.println("Fetch Order");
 		ModelAndView mv = new ModelAndView();
 		// mv.addObject("list", "123456");
-		mv.setViewName("/admin/index");
+		
+		
+		List<OrdersModel> list = ordersService.getAllOrders();
+		List<OrderMoreModel> o = new ArrayList<>();
+		for (OrdersModel order : list) {
+			int u_id = order.getU_id();
+			OrderMoreModel omm = new OrderMoreModel();
+			omm.setU_id(u_id);
+			omm.setO_id(order.getO_id());
+			omm.setStatus(order.getStatus());
+			omm.setUsername(userService.findUser(u_id).getUsername());
+			omm.setCreate_time(order.getCreate_time());
+			o.add(omm);
+		}
+		
+		mv.addObject("list",o);
+		mv.setViewName("/admin/order_list");
 		return mv;
 	}
 
+	// 所有订单
+		@RequestMapping("/orders/{id}")
+		public ModelAndView adminOrderDetail(@PathVariable("id") int id,HttpServletRequest request, HttpServletResponse response) throws Exception {
+			// String username = request.getParameter("username");
+			System.out.println("Fetch Order" + id);
+			ModelAndView mv = new ModelAndView();
+			
+			
+			
+//			List<OrdersModel> list = ordersService.getAllOrders();
+//			List<OrderMoreModel> o = new ArrayList<>();
+//			for (OrdersModel order : list) {
+//				int u_id = order.getU_id();
+//				OrderMoreModel omm = new OrderMoreModel();
+//				omm.setU_id(u_id);
+//				omm.setO_id(order.getO_id());
+//				omm.setStatus(order.getStatus());
+//				omm.setUsername(userService.findUser(u_id).getUsername());
+//				omm.setCreate_time(order.getCreate_time());
+//				o.add(omm);
+//			}
+//			
+//			mv.addObject("list",o);
+			mv.setViewName("/admin/order_detail");
+			return mv;
+		}
 
 	private boolean isEmpty(String name) {
 		if (name == null || name.trim().isEmpty()) {

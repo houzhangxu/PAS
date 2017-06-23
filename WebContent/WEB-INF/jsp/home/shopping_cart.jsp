@@ -4,7 +4,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 
 		<title>购物车页面</title>
 
@@ -15,6 +15,23 @@
 
 		<script type="text/javascript" src="/PAS/static/home/js/jquery.js"></script>
 
+		<style type="text/css">
+			.order{
+				display:block;
+				width:100px;
+				height:40px;
+				background-color:#e84939;
+				color:#fff;
+				line-height:40px;
+				text-align:center;
+				margin-top:20px;
+				float:right;
+			}
+			.order:hover{
+				color:#fff;
+				background-color: #d63b2b;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -39,7 +56,7 @@
 			<div class="clear"></div>
 
 			<!--购物车 -->
-			<div class="concent">
+			<div class="concent" style="padding-bottom:171px;">
 				<div id="cartTable">
 					<div class="cart-table-th">
 						<div class="wp">
@@ -67,7 +84,6 @@
 					</div>
 					<div class="clear"></div>
 
-					<tr class="item-list">
 						<div class="bundle  bundle-last ">
 							<div class="clear"></div>
 							<div class="bundle-main">
@@ -136,7 +152,14 @@
 								
 							</div>
 						</div>
-					</tr>
+						<%
+						if(all.size() > 0){
+							%>
+							<a href="/PAS/order/add" class="order">结算</a>
+							<% 
+						}
+						%>
+						
 					<div class="clear"></div>
 				</div>
 				<div class="clear"></div>

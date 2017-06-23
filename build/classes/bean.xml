@@ -65,6 +65,7 @@
 	<bean id="goods_service" class="com.pas.service.GoodsService"></bean>
 	<bean id="goods_type_service" class="com.pas.service.GoodsTypeService"></bean>
 	<bean id="orders_service" class="com.pas.service.OrdersService"></bean>
+	<bean id="orders_goods_service" class="com.pas.service.OrderGoodsService"></bean>
 	<bean id="shopping_service" class="com.pas.service.ShoppingCartService"></bean>
 	<bean id="admin_service" class="com.pas.service.AdminService"></bean>
 	

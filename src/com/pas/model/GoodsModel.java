@@ -12,7 +12,6 @@ public class GoodsModel {
 	private double total;
 	private int creator;
 	private double create_time;
-	
 	public int getG_id() {
 		return g_id;
 	}

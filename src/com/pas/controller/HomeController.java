@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pas.model.GoodsModel;
+import com.pas.model.OrderGoodsModel;
+import com.pas.model.OrdersModel;
 import com.pas.model.ShoppingCartModel;
 import com.pas.model.ShoppingCartMoreModel;
 import com.pas.model.UserModel;
 import com.pas.service.GoodsServiceImp;
+import com.pas.service.OrderGoodsServiceImp;
+import com.pas.service.OrdersServiceImp;
 import com.pas.service.ShoppingCartService;
 import com.pas.service.ShoppingCartServiceImp;
 import com.pas.service.UserServiceImp;
@@ -33,7 +37,11 @@ public class HomeController {
 	private UserServiceImp userService;
 	@Autowired
 	private ShoppingCartServiceImp shoppingCartService;
-
+	@Autowired
+	private OrdersServiceImp ordersService;
+	@Autowired
+	private OrderGoodsServiceImp orderGoodsService;
+	
 	// 登录页面
 	@RequestMapping("/login")
 	public ModelAndView login(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -330,6 +338,58 @@ public class HomeController {
 		}
 		
 
+		return mv;
+	}
+	//订单创建
+	@RequestMapping(path = "/order/add", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView ordersAdd(HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		// String username = request.getParameter("username");
+		System.out.println("Fetch Home Order add" );
+		ModelAndView mv = new ModelAndView();
+
+		HttpSession session = request.getSession();
+		
+		int u_id = ((Integer) session.getAttribute("uid")).intValue(); //获取当前用户id
+		
+		OrdersModel om = new OrdersModel();
+		om.setU_id(u_id);
+		om.setStatus(0);
+		om.setCreate_time(new Date().getTime());
+		
+		List<ShoppingCartModel> sc = shoppingCartService.selectCartInfoByUId(u_id);
+
+		System.out.println(sc);
+		System.out.println(sc.size());
+		
+		if(sc == null || sc.size() == 0){
+			mv.addObject("error", "购物车里面没有商品,订单创建失败");
+			mv.addObject("target", "/PAS/cart");
+			mv.setViewName("/home/error");
+		}
+		
+		if(!ordersService.createOrder(om)){  //创建订单
+			mv.addObject("error", "订单创建失败");
+			mv.addObject("target", "/PAS/cart");
+			mv.setViewName("/home/error");
+		}
+		
+		int o_id = om.getO_id();
+		
+		for (ShoppingCartModel shop : sc) {  //将购物车商品添加至订单 
+			OrderGoodsModel ogm = new OrderGoodsModel();
+			ogm.setO_id(o_id);
+			ogm.setG_id(shop.getG_id());
+			ogm.setDiscount(100);
+			ogm.setTotal(shop.getTotal());
+			ogm.setCreate_time(new Date().getTime());
+			orderGoodsService.addOrderGoods(ogm);
+			shoppingCartService.removeGoods(shop.getS_c_id());
+		}
+		
+		mv.addObject("success", "订单创建成功");
+		mv.addObject("target", "/PAS/cart");
+		mv.setViewName("/home/success");
 		return mv;
 	}
 	

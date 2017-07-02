@@ -12,4 +12,6 @@ public interface OrdersDaoImp {
 	public int deleteOrdersByOId(int o_id);
 	public int updateOrdersByOId(OrdersModel om);
 	public int getCount();
+	public List<OrdersModel> selectOrdersEn(int statusNo);
+	public int updateStatusByOId(OrdersModel om);
 }

@@ -67,9 +67,9 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-file-text-o"></i> 所有订单</a></li>
-            <li><a href="#"><i class="fa fa-file-o"></i> 未处理订单</a></li>
-            <li><a href="#"><i class="fa fa-circle-o-notch"></i> 已完成订单</a></li>
+          	<li><a href="/PAS/admin/orders"><i class="fa fa-file-o"></i> 未处理订单</a></li>
+          	<li><a href="/PAS/admin/orders/en"><i class="fa fa-circle-o-notch"></i> 已完成订单</a></li>
+            <li><a href="/PAS/admin/orders/er"><i class="fa fa-file-text-o"></i> 未完成订单</a></li>
           </ul>
         </li>
 

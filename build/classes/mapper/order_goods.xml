@@ -7,6 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="findOrderGoodsById" parameterType="int" resultType="com.pas.model.OrderGoodsModel">
 		select * from order_goods where o_g_id=#{value}
 	</select>
+	<select id="selectOrderGoodsByOId" parameterType="int" resultType="com.pas.model.OrderGoodsModel">
+		select * from order_goods where o_id=#{value}
+	</select>
 	<select id="selectOrderGoods" resultType="com.pas.model.OrderGoodsModel">
 		select * from order_goods order by create_time desc
 	</select>

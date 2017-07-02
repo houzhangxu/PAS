@@ -10,4 +10,5 @@ public interface OrderGoodsDaoImp {
 	public void insertOrderGoods(OrderGoodsModel ogm);
 	public int deleteOrderGoodsByOGId(int o_g_id);
 	public int updateOrderGoodsByOGId(OrderGoodsModel ogm);
+	public List<OrderGoodsModel> selectOrderGoodsByOId(int o_id);
 }

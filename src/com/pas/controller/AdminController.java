@@ -19,12 +19,14 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pas.model.AdminModel;
 import com.pas.model.GoodsModel;
+import com.pas.model.OrderGoodsModel;
 import com.pas.model.OrderMoreModel;
 import com.pas.model.OrdersModel;
 import com.pas.model.UserModel;
 import com.pas.service.AdminServiceImp;
 import com.pas.service.GoodsService;
 import com.pas.service.GoodsServiceImp;
+import com.pas.service.OrderGoodsServiceImp;
 import com.pas.service.OrdersServiceImp;
 import com.pas.service.UserService;
 import com.pas.service.UserServiceImp;
@@ -41,24 +43,26 @@ public class AdminController {
 	private UserServiceImp userService;
 	@Autowired
 	private OrdersServiceImp ordersService;
-	
+	@Autowired
+	private OrderGoodsServiceImp orderGoodsService;
+
 	// 首页
 	@RequestMapping("")
 	public ModelAndView admin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// String username = request.getParameter("username");
 		System.out.println("Fetch Login");
 		ModelAndView mv = new ModelAndView();
-		
+
 		int order = ordersService.getCount();
 		int user = userService.getCount();
 		int goods = gs.getCount();
 		int admin_n = admin.getCount();
-		
+
 		mv.addObject("order", order);
 		mv.addObject("user", user);
-		mv.addObject("goods",goods );
+		mv.addObject("goods", goods);
 		mv.addObject("admin", admin_n);
-		
+
 		System.out.println(order);
 		mv.setViewName("/admin/index");
 		return mv;
@@ -119,7 +123,7 @@ public class AdminController {
 		mv.setViewName("/admin/success");
 		return mv;
 	}
-	
+
 	// 退出登录
 	@RequestMapping("/sigout")
 	public ModelAndView sigout(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -127,15 +131,17 @@ public class AdminController {
 		System.out.println("Fetch Sigout");
 		ModelAndView mv = new ModelAndView();
 		// mv.addObject("list", "123456");
-		
+
 		HttpSession session = request.getSession();
 		session.setAttribute("aid", Integer.valueOf(0));
 		session.setAttribute("admin_name", null);
-		
-		mv.setViewName("/admin/login");
+
+		mv.addObject("success", "退出成功");
+		mv.addObject("target", "/PAS/admin/login");
+		mv.setViewName("/admin/success");
 		return mv;
 	}
-	
+
 	// 用户列表
 	@RequestMapping("/user")
 	public ModelAndView user(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -599,16 +605,15 @@ public class AdminController {
 		return mv;
 	}
 
-	// 所有订单
+	// 未处理订单
 	@RequestMapping("/orders")
 	public ModelAndView adminOrders(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		// String username = request.getParameter("username");
 		System.out.println("Fetch Order");
 		ModelAndView mv = new ModelAndView();
 		// mv.addObject("list", "123456");
-		
-		
-		List<OrdersModel> list = ordersService.getAllOrders();
+
+		List<OrdersModel> list = ordersService.getAllOrdersEn(0);
 		List<OrderMoreModel> o = new ArrayList<>();
 		for (OrdersModel order : list) {
 			int u_id = order.getU_id();
@@ -620,39 +625,143 @@ public class AdminController {
 			omm.setCreate_time(order.getCreate_time());
 			o.add(omm);
 		}
-		
-		mv.addObject("list",o);
+
+		mv.addObject("list", o);
+		mv.setViewName("/admin/order_list");
+		return mv;
+	}
+
+	// 已完成订单
+	@RequestMapping("/orders/en")
+	public ModelAndView adminOrdersEn(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// String username = request.getParameter("username");
+		System.out.println("Fetch Order");
+		ModelAndView mv = new ModelAndView();
+		// mv.addObject("list", "123456");
+
+		List<OrdersModel> list = ordersService.getAllOrdersEn(1);
+		List<OrderMoreModel> o = new ArrayList<>();
+		for (OrdersModel order : list) {
+			int u_id = order.getU_id();
+			OrderMoreModel omm = new OrderMoreModel();
+			omm.setU_id(u_id);
+			omm.setO_id(order.getO_id());
+			omm.setStatus(order.getStatus());
+			omm.setUsername(userService.findUser(u_id).getUsername());
+			omm.setCreate_time(order.getCreate_time());
+			o.add(omm);
+		}
+
+		mv.addObject("list", o);
+		mv.setViewName("/admin/order_list");
+		return mv;
+	}
+
+	// 未完成订单
+	@RequestMapping("/orders/er")
+	public ModelAndView adminOrdersEr(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// String username = request.getParameter("username");
+		System.out.println("Fetch Order");
+		ModelAndView mv = new ModelAndView();
+		// mv.addObject("list", "123456");
+
+		List<OrdersModel> list = ordersService.getAllOrdersEn(-1);
+		List<OrderMoreModel> o = new ArrayList<>();
+		for (OrdersModel order : list) {
+			int u_id = order.getU_id();
+			OrderMoreModel omm = new OrderMoreModel();
+			omm.setU_id(u_id);
+			omm.setO_id(order.getO_id());
+			omm.setStatus(order.getStatus());
+			omm.setUsername(userService.findUser(u_id).getUsername());
+			omm.setCreate_time(order.getCreate_time());
+			o.add(omm);
+		}
+
+		mv.addObject("list", o);
 		mv.setViewName("/admin/order_list");
 		return mv;
 	}
 
 	// 所有订单
-		@RequestMapping("/orders/{id}")
-		public ModelAndView adminOrderDetail(@PathVariable("id") int id,HttpServletRequest request, HttpServletResponse response) throws Exception {
-			// String username = request.getParameter("username");
-			System.out.println("Fetch Order" + id);
-			ModelAndView mv = new ModelAndView();
-			
-			
-			
-//			List<OrdersModel> list = ordersService.getAllOrders();
-//			List<OrderMoreModel> o = new ArrayList<>();
-//			for (OrdersModel order : list) {
-//				int u_id = order.getU_id();
-//				OrderMoreModel omm = new OrderMoreModel();
-//				omm.setU_id(u_id);
-//				omm.setO_id(order.getO_id());
-//				omm.setStatus(order.getStatus());
-//				omm.setUsername(userService.findUser(u_id).getUsername());
-//				omm.setCreate_time(order.getCreate_time());
-//				o.add(omm);
-//			}
-//			
-//			mv.addObject("list",o);
-			mv.setViewName("/admin/order_detail");
+	@RequestMapping("/orders/{id}")
+	public ModelAndView adminOrderDetail(@PathVariable("id") int o_id, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		System.out.println("Fetch Order" + o_id);
+		ModelAndView mv = new ModelAndView();
+		double sum_price = 0;
+		double sum_total = 0;
+		OrdersModel order = ordersService.findOrdersByOId(o_id); // 订单信息
+		if (order == null) {
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "订单处理失败");
 			return mv;
 		}
+		int u_id = order.getU_id();
+		UserModel user = userService.findUser(u_id); // 用户信息
+		List<OrderGoodsModel> ogm = orderGoodsService.selectOrderGoodsByOId(o_id); // 根据订单信息去查订单详情表
+		List<GoodsModel> gm = new ArrayList<>();
 
+		for (OrderGoodsModel orderGoodsModel : ogm) {
+			int goods_id = orderGoodsModel.getG_id();
+			GoodsModel g = gs.findGoods(goods_id);
+			g.setTotal(orderGoodsModel.getTotal());
+			sum_price += (g.getPrice() * g.getTotal());
+			sum_total += g.getTotal();
+			gm.add(g);
+		}
+
+		//
+		mv.addObject("order", order);
+		mv.addObject("user", user);
+		mv.addObject("orderGoods", ogm);
+		mv.addObject("goods", gm);
+		mv.addObject("sum_total", sum_total);
+		mv.addObject("sum_price", sum_price);
+		mv.setViewName("/admin/order_detail");
+		return mv;
+	}
+
+	// 同意订单
+	@RequestMapping("/orders/do/{id}")
+	public ModelAndView adminDoOrder(@PathVariable("id") int o_id, HttpServletRequest request,
+			HttpServletResponse response) throws Exception {
+		System.out.println("Fetch Order" + o_id);
+		ModelAndView mv = new ModelAndView();
+		OrdersModel om = new OrdersModel();
+		om.setO_id(o_id);
+		om.setStatus(1);
+		if(ordersService.updateStatus(om) < 1){
+			mv.setViewName("/admin/error");
+			mv.addObject("er", "订单处理失败");
+			return mv;
+		}
+		mv.addObject("success", "订单处理成功");
+		mv.addObject("target", "/PAS/admin/login");
+		mv.setViewName("/admin/success");
+		return mv;
+	}
+
+	// 拒绝订单
+		@RequestMapping("/orders/no/{id}")
+		public ModelAndView adminNoOrder(@PathVariable("id") int o_id, HttpServletRequest request,
+				HttpServletResponse response) throws Exception {
+			System.out.println("Fetch Order" + o_id);
+			ModelAndView mv = new ModelAndView();
+			OrdersModel om = new OrdersModel();
+			om.setO_id(o_id);
+			om.setStatus(-1);
+			if(ordersService.updateStatus(om) < 1){
+				mv.setViewName("/admin/error");
+				mv.addObject("er", "订单处理失败");
+				return mv;
+			}
+			mv.addObject("success", "订单处理成功");
+			mv.addObject("target", "/PAS/admin/login");
+			mv.setViewName("/admin/success");
+			return mv;
+		}
+	
 	private boolean isEmpty(String name) {
 		if (name == null || name.trim().isEmpty()) {
 			return true;

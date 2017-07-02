@@ -58,13 +58,16 @@
       </ol>
     </section>
 
+
+<jsp:useBean id="myDate" class="java.util.Date"/>
+<c:set target="${myDate}" property="time" value="${ order.create_time }"/>
 <section class="invoice" style="margin-bottom: 0px; padding-bottom: 20px;">
       <!-- title row -->
       <div class="row">
         <div class="col-xs-12">
-          <h2 class="page-header">
-            <i class="fa fa-globe"></i> AdminLTE, Inc.
-            <small class="pull-right">Date: 2/10/2014</small>
+          <h2 class="page-header" style="text-transform: uppercase;">
+            <i class="fa fa-globe"></i>${user.username}.USER
+            <small class="pull-right">Date: <fmt:formatDate value="${myDate }" pattern="yyyy-MM-dd HH:mm:ss"/></small>
           </h2>
         </div>
         <!-- /.col -->
@@ -80,38 +83,19 @@
               <th>名称</th>
               <th>数量</th>
               <th>商品描述</th>
-              <th>总价</th>
+              <th>单价</th>
             </tr>
             </thead>
             <tbody>
+            <c:forEach items="${goods}" var="g">
             <tr>
-              <td>1</td>
-              <td>Call of Duty</td>
-              <td>455-981-221</td>
-              <td>El snort testosterone trophy driving gloves handsome</td>
-              <td>$64.50</td>
+              <td>${g.g_id}</td>
+              <td>${g.goods_name}</td>
+              <td>${g.total}</td>
+              <td>${g.goods_main}</td>
+              <td>${g.price}¥</td>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Need for Speed IV</td>
-              <td>247-925-726</td>
-              <td>Wes Anderson umami biodiesel</td>
-              <td>$50.00</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Monsters DVD</td>
-              <td>735-845-642</td>
-              <td>Terry Richardson helvetica tousled street art master</td>
-              <td>$10.70</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Grown Ups Blue Ray</td>
-              <td>422-568-642</td>
-              <td>Tousled lomo letterpress</td>
-              <td>$25.99</td>
-            </tr>
+            </c:forEach>
             </tbody>
           </table>
         </div>
@@ -123,25 +107,18 @@
         <!-- accepted payments column -->
         <!-- /.col -->
         <div class="col-xs-6">
-          <p class="lead">Amount Due 2/22/2014</p>
+          <p class="lead"><fmt:formatDate value="${myDate }" pattern="yyyy-MM-dd"/></p>
 
           <div class="table-responsive">
             <table class="table">
-              <tbody><tr>
-                <th style="width:50%">Subtotal:</th>
-                <td>$250.30</td>
+              <tbody>
+              <tr>
+                <th>件数:</th>
+                <td>${sum_total}</td>
               </tr>
               <tr>
-                <th>Tax (9.3%)</th>
-                <td>$10.34</td>
-              </tr>
-              <tr>
-                <th>Shipping:</th>
-                <td>$5.80</td>
-              </tr>
-              <tr>
-                <th>Total:</th>
-                <td>$265.24</td>
+                <th>总价:</th>
+                <td>${sum_price}¥</td>
               </tr>
             </tbody></table>
           </div>
@@ -154,11 +131,11 @@
       <div class="row no-print">
         <div class="col-xs-12">
           <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fa fa-print"></i> Print</a>
-          <button type="button" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Submit Payment
-          </button>
-          <button type="button" class="btn btn-primary pull-right" style="margin-right: 5px;">
-            <i class="fa fa-download"></i> Generate PDF
-          </button>
+          <a href="/PAS/admin/orders/do/${order.o_id}" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> 同意订单
+          </a>
+        	<a href="/PAS/admin/orders/no/${order.o_id}" class="btn btn-primary pull-right" style="margin-right: 5px;">
+            <i class="fa fa-download"></i> 拒绝订单
+          </a>
         </div>
       </div>
     </section>

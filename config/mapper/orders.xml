@@ -13,6 +13,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectOrders" resultType="com.pas.model.OrdersModel">
 		select * from orders order by create_time desc
 	</select>
+	<select id="selectOrdersEn" parameterType="int" resultType="com.pas.model.OrdersModel">
+		select * from orders where status = #{value} order by create_time desc
+	</select>
 	<select id="getCount" resultType="int">
 		select count(*) from orders
 	</select>
@@ -27,5 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	<update id="updateOrdersByOId" parameterType="com.pas.model.OrdersModel">
 		update orders set o_id=#{o_id},u_id=#{u_id},status=#{status},create_time=#{create_time} where o_id=#{value}
+	</update>
+	<update id="updateStatusByOId" parameterType="com.pas.model.OrdersModel">
+		update orders set status=#{status} where o_id=#{o_id}
 	</update>
 </mapper>

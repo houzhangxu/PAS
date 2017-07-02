@@ -36,4 +36,27 @@ public class OrdersService implements OrdersServiceImp {
 		return dao.selectOrders();
 	}
 
+
+	@Override
+	public OrdersModel findOrdersByOId(int o_id) {
+		// TODO Auto-generated method stub
+		return dao.findOrdersByOId(o_id);
+	}
+
+
+	@Override
+	public List<OrdersModel> getAllOrdersEn(int statusNo) {  //已完成订单
+		// TODO Auto-generated method stub
+		return dao.selectOrdersEn(statusNo);
+	}
+
+
+	@Override
+	public int updateStatus(OrdersModel om) {
+		// TODO Auto-generated method stub
+		return dao.updateStatusByOId(om);
+	}
+
+
+
 }

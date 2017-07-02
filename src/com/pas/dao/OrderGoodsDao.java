@@ -41,4 +41,10 @@ public class OrderGoodsDao implements OrderGoodsDaoImp {
 		return ss.update("order_goods.updateOrderGoodsByOGId", ogm);
 	}
 
+	@Override
+	public List<OrderGoodsModel> selectOrderGoodsByOId(int o_id) {
+		// TODO Auto-generated method stub
+		return ss.selectList("order_goods.selectOrderGoodsByOId",o_id);
+	}
+
 }

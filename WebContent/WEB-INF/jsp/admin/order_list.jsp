@@ -82,7 +82,7 @@
                 <jsp:useBean id="myDate" class="java.util.Date"/> 
                 <c:forEach items="${ list }" var="order">
                 <tr>
-                  <td>${order.o_id}</td>
+                  <td><a href="/PAS/admin/orders/${order.o_id}">${order.o_id}</a></td>
                   <td>${order.username}</td>
                   <c:set target="${myDate}" property="time" value="${ order.create_time }"/>
                   <td><fmt:formatDate value="${myDate }" pattern="yyyy-MM-dd HH:mm:ss"/></td>

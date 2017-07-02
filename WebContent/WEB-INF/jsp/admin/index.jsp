@@ -92,7 +92,7 @@
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="/PAS/admin/goods" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/PAS/admin/orders" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
